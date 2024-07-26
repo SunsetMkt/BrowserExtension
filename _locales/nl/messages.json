@@ -149,6 +149,9 @@
 			}
 		}
 	},
+	"agecheck_option_hint": {
+		"message": "SteamDB heeft een optie om automatisch deze leeftijd check pagina's te overslaan"
+	},
 	"explore_auto_discover": {
 		"message": "Automatisch ontdekken"
 	},
@@ -171,29 +174,45 @@
 			}
 		}
 	},
-	"explore_failed_to_clear": {
-		"message": "Niet gelukt om wachtrij-item #$current$ te wissen, probeer het over vijf seconden opnieuw…",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
 	"explore_failed_to_clear_too_many": {
-		"message": "Wachtrij artikel #$current$ te vaak gefaald met wissen. Je kunt het later opnieuw proberen.",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "Het genereren van de nieuwe wachtrij is mislukt, probeer het over vijf seconden opnieuw…"
+		"message": "Het voltooien van de queue is te vaak mislukt. Probeer het later opnieuw."
 	},
 	"explore_finished": {
 		"message": "Wachtrij is verkend."
+	},
+	"explore_saleitem_claim": {
+		"message": "Claim beloning"
+	},
+	"explore_saleitem_claim_description": {
+		"message": "Claim de gratis dagelijkse beloning als die er is."
+	},
+	"explore_saleitem_trying_to_claim": {
+		"message": "Dagelijkse beloning aan het claimen…"
+	},
+	"explore_saleitem_cant_claim": {
+		"message": "Geen dagelijkse beloning om te claimen op dit moment."
+	},
+	"explore_saleitem_next_item_time": {
+		"message": "Volgende beloning beschikbaar: $datetime$",
+		"placeholders": {
+			"datetime": {
+				"content": "$1",
+				"example": "01.07.2024, 20:00:00",
+				"description": "Date and time format depends on locale set in browser"
+			}
+		}
+	},
+	"explore_saleitem_claim_failed": {
+		"message": "Het claimen van de dagelijkse beloning is mislukt."
+	},
+	"explore_saleitem_success": {
+		"message": "Nieuwe beloning geclaimd: $item$.",
+		"placeholders": {
+			"item": {
+				"content": "$1",
+				"example": "Unicorn Sticker"
+			}
+		}
 	},
 	"badges_idle_apps": {
 		"message": "Apps om stil te zetten: $amount$",
@@ -296,6 +315,27 @@
 	},
 	"inventory_sell_at_title": {
 		"message": "Vermeld het item voor de hoogst vermelde vraagprijs\n\nWeergegeven prijs is het geld dat je krijgt (zonder vergoedingen)"
+	},
+	"inventory_badge_level": {
+		"message": "Jouw badge level: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "5"
+			}
+		}
+	},
+	"inventory_badge_foil_level": {
+		"message": "Jouw glimmende badge level: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "1"
+			}
+		}
+	},
+	"inventory_badge_none": {
+		"message": "Geen badge gemaakt"
 	},
 	"options": {
 		"message": "Opties"
@@ -462,7 +502,7 @@
 		"message": "Toon een knop bij de community hubs"
 	},
 	"options_button_gamecards": {
-		"message": "Toon SteamDB en bewaar pagina knoppen op de gamecard pagina"
+		"message": "Toon SteamDB- en winkelpaginaknoppen op de ruilkaartenpagina"
 	},
 	"options_link_subid": {
 		"message": "Toon sub-ID onder elke aankoopoptie"
@@ -494,6 +534,9 @@
 	},
 	"options_enhancement_inventory_quick_sell_auto": {
 		"message": "Snelle verkoop automatisch accepteren"
+	},
+	"options_enhancement_inventory_badge_info": {
+		"message": "Toon badge level op ruilkaarten en booster packs"
 	},
 	"options_display_market_price_others": {
 		"message": "Toon artikel marktprijs in inventaris van andere gebruikers"
@@ -580,10 +623,13 @@
 		"message": "Voeg een knop toe om het blok \"al in je bibliotheek\" in te klappen"
 	},
 	"options_builtin_card_drops": {
-		"message": "Geef het totale aantal resterende kaart drops weer op de badges pagina"
+		"message": "Geef het totale aantal resterende kaartdrops weer op de badgepagina"
 	},
 	"options_builtin_queue_cheat": {
 		"message": "Voeg een knop toe om automatisch de wachtrij te ontdekken tijdens de verkoop"
+	},
+	"options_builtin_multibuy_redirect": {
+		"message": "Verwijs terug naar de game cards pagina na het kopen van de resterende cards"
 	},
 	"options_builtin_achievements_global": {
 		"message": "Verbeter de globale achievements pagina"

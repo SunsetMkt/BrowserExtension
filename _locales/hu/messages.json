@@ -171,29 +171,45 @@
 			}
 		}
 	},
-	"explore_failed_to_clear": {
-		"message": "$current$. várólistaelem törlése sikertelen, újrapróbálás öt másodperc múlva…",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
 	"explore_failed_to_clear_too_many": {
-		"message": "#$current$ várólista elem törlése sikertelen többszöri próbálkozás után is. Később újra próbálhatja.",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "Új várólista generálása sikertelen, újrapróbálás öt másodperc múlva…"
+		"message": "A várólista felfedezése sikertelen több próbálkozás után is. Később próbáld újra."
 	},
 	"explore_finished": {
-		"message": "A várólistát már fel lett fedezve."
+		"message": "A várólista fel lett fedezve."
+	},
+	"explore_saleitem_claim": {
+		"message": "Jutalom felvétele"
+	},
+	"explore_saleitem_claim_description": {
+		"message": "Az ingyenes napi jutalom begyűjtése, ha elérhető."
+	},
+	"explore_saleitem_trying_to_claim": {
+		"message": "Napi jutalom felvétele…"
+	},
+	"explore_saleitem_cant_claim": {
+		"message": "Jelenleg nincs felvehető napi jutalom."
+	},
+	"explore_saleitem_next_item_time": {
+		"message": "Következő tárgy elérhető ekkor: $datetime$",
+		"placeholders": {
+			"datetime": {
+				"content": "$1",
+				"example": "01.07.2024, 20:00:00",
+				"description": "Date and time format depends on locale set in browser"
+			}
+		}
+	},
+	"explore_saleitem_claim_failed": {
+		"message": "Nem sikerült felvenni a napi jutalmat."
+	},
+	"explore_saleitem_success": {
+		"message": "Jutalom felvéve: $item$.",
+		"placeholders": {
+			"item": {
+				"content": "$1",
+				"example": "Unicorn Sticker"
+			}
+		}
 	},
 	"badges_idle_apps": {
 		"message": "Játékok kártyákkal: $amount$",
@@ -296,6 +312,27 @@
 	},
 	"inventory_sell_at_title": {
 		"message": "Tárgy felajánlása eladásra a legmagasabb vételi áron\n\nA megjelenített ár az összeg amit meg fogsz kapni (azaz díjak nélkül)"
+	},
+	"inventory_badge_level": {
+		"message": "A te kitűződ szintje: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "5"
+			}
+		}
+	},
+	"inventory_badge_foil_level": {
+		"message": "A te fóliás kitűződ szintje: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "1"
+			}
+		}
+	},
+	"inventory_badge_none": {
+		"message": "Nincs elkészítve kitűző"
 	},
 	"options": {
 		"message": "Beállítások"
@@ -495,6 +532,9 @@
 	"options_enhancement_inventory_quick_sell_auto": {
 		"message": "Gyors eladás automatikus elfogadása"
 	},
+	"options_enhancement_inventory_badge_info": {
+		"message": "Kitűző szintjének megjelenítése játékkártyáknál és bónuszcsomagoknál"
+	},
 	"options_display_market_price_others": {
 		"message": "Tárgyak piaci árának megjelenítése más felhasználók raktáraiban"
 	},
@@ -584,6 +624,9 @@
 	},
 	"options_builtin_queue_cheat": {
 		"message": "Legyen egy gomb a felfedezési várólista elcsalására a leárazások ideje alatt"
+	},
+	"options_builtin_multibuy_redirect": {
+		"message": "Visszairányítás a játékkártyák oldalára a hiányzó kártyák megvásárlása után"
 	},
 	"options_builtin_achievements_global": {
 		"message": "Globális játékstatisztikák oldal feljavítása"

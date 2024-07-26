@@ -191,7 +191,7 @@ else
 					continue;
 				}
 
-				InsertPurchaseBlockId( element.querySelector( '.game_purchase_action' ), 'sub', subid.groups.id );
+				InsertPurchaseBlockId( element.closest( '.game_purchase_action' ), 'sub', subid.groups.id );
 			}
 
 			// Link appid in demo download banner
@@ -531,7 +531,7 @@ function DrawLowestPrice()
 
 		if( Number.isInteger( response.data.c ) && response.data.c > 1 )
 		{
-			bottom.innerHTML = _t( 'app_lowest_date_multiple', [
+			bottom.textContent = _t( 'app_lowest_date_multiple', [
 				lastOn,
 				relativeText,
 				response.data.c.toString(),
@@ -539,7 +539,7 @@ function DrawLowestPrice()
 		}
 		else
 		{
-			bottom.innerHTML = _t( 'app_lowest_date', [ lastOn, relativeText ] );
+			bottom.textContent = _t( 'app_lowest_date', [ lastOn, relativeText ] );
 		}
 	} );
 }
@@ -845,6 +845,12 @@ function FormatRelativeDate( date )
 
 function InsertPurchaseBlockId( element, type, id )
 {
+	if( !element )
+	{
+		WriteLog( 'Tried to insert purchase block for non existing element', type, id );
+		return;
+	}
+
 	const span = document.createElement( 'span' );
 	span.dataset.tooltipText = _t( 'view_on_steamdb' );
 

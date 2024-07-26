@@ -154,6 +154,10 @@
 		}
 	},
 
+	"agecheck_option_hint": {
+		"message": "SteamDB has an option to automatically skip these age check pages"
+	},
+
 	"explore_auto_discover": {
 		"message": "Auto-discover"
 	},
@@ -176,29 +180,45 @@
 			}
 		}
 	},
-	"explore_failed_to_clear": {
-		"message": "Failed to clear queue item #$current$, trying again in five seconds…",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
 	"explore_failed_to_clear_too_many": {
-		"message": "Failed to clear queue item #$current$ too many times. You can try again later.",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "Failed to generate new queue, trying again in five seconds…"
+		"message": "Failed to clear the queue too many times. You can try again later."
 	},
 	"explore_finished": {
 		"message": "Queue has been explored."
+	},
+	"explore_saleitem_claim": {
+		"message": "Claim reward"
+	},
+	"explore_saleitem_claim_description": {
+		"message": "Claim the free daily reward if there is one."
+	},
+	"explore_saleitem_trying_to_claim": {
+		"message": "Claiming the daily reward…"
+	},
+	"explore_saleitem_cant_claim": {
+		"message": "No daily reward to claim at this moment."
+	},
+	"explore_saleitem_next_item_time": {
+		"message": "Next item available: $datetime$",
+		"placeholders": {
+			"datetime": {
+				"content": "$1",
+				"example": "01.07.2024, 20:00:00",
+				"description": "Date and time format depends on locale set in browser"
+			}
+		}
+	},
+	"explore_saleitem_claim_failed": {
+		"message": "Failed to claim the daily reward."
+	},
+	"explore_saleitem_success": {
+		"message": "New reward claimed: $item$.",
+		"placeholders": {
+			"item": {
+				"content": "$1",
+				"example": "Unicorn Sticker"
+			}
+		}
 	},
 
 	"badges_idle_apps": {
@@ -304,6 +324,27 @@
 	},
 	"inventory_sell_at_title": {
 		"message": "Lists the item for highest listed buy order price\n\nDisplayed price is the money you receive (without fees)"
+	},
+	"inventory_badge_level": {
+		"message": "Your badge level: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "5"
+			}
+		}
+	},
+	"inventory_badge_foil_level": {
+		"message": "Your foil badge level: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "1"
+			}
+		}
+	},
+	"inventory_badge_none": {
+		"message": "No badge crafted"
 	},
 
 
@@ -510,6 +551,9 @@
 	"options_enhancement_inventory_quick_sell_auto": {
 		"message": "Automatically accept quick sell"
 	},
+	"options_enhancement_inventory_badge_info": {
+		"message": "Display badge level on trading cards and booster packs"
+	},
 	"options_display_market_price_others": {
 		"message": "Display item market price in other users' inventories"
 	},
@@ -599,6 +643,9 @@
 	},
 	"options_builtin_queue_cheat": {
 		"message": "Add a button to automatically discover the queue during sales"
+	},
+	"options_builtin_multibuy_redirect": {
+		"message": "Redirect back to game cards page after buying remaining cards"
 	},
 	"options_builtin_achievements_global": {
 		"message": "Improve global achievements page"

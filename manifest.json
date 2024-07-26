@@ -1,6 +1,6 @@
 {
 	"manifest_version": 3,
-	"version": "4.2.4",
+	"version": "4.5",
 	"author": "SteamDB",
 	"name": "SteamDB",
 	"short_name": "SteamDB",
@@ -9,6 +9,7 @@
 	"homepage_url": "https://steamdb.info/",
 	"options_ui":
 	{
+		"open_in_tab": true,
 		"page": "options/options.html"
 	},
 	"icons":
@@ -53,6 +54,7 @@
 				"scripts/community/inventory.js",
 				"scripts/community/agecheck_injected.js",
 				"scripts/community/filedetails_award_injected.js",
+				"scripts/community/multibuy_injected.js",
 				"scripts/community/profile_award_injected.js",
 				"scripts/community/tradeoffer_injected.js",
 				"scripts/store/account_licenses_injected.js",
@@ -486,6 +488,17 @@
 			"js":
 			[
 				"scripts/community/filedetails.js"
+			]
+		},
+		{
+			"run_at": "document_end",
+			"matches":
+			[
+				"https://steamcommunity.com/market/multibuy*"
+			],
+			"js":
+			[
+				"scripts/community/multibuy.js"
 			]
 		},
 		{

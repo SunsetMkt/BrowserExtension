@@ -149,6 +149,9 @@
 			}
 		}
 	},
+	"agecheck_option_hint": {
+		"message": "SteamDB 可選項自動跳過此種年齡檢查頁面"
+	},
 	"explore_auto_discover": {
 		"message": "自動探索佇列"
 	},
@@ -171,29 +174,45 @@
 			}
 		}
 	},
-	"explore_failed_to_clear": {
-		"message": "無法清除佇列項目 #$current$，將在五秒後重試...",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
 	"explore_failed_to_clear_too_many": {
-		"message": "多次嘗試移除佇列項目 #$current$ 失敗。您可以稍後再試。",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "無法產生新佇列，將在五秒後重試..."
+		"message": "佇列清除失敗次數過多。您可以稍後再試。"
 	},
 	"explore_finished": {
 		"message": "佇列已探索完成。"
+	},
+	"explore_saleitem_claim": {
+		"message": "領取獎勵"
+	},
+	"explore_saleitem_claim_description": {
+		"message": "將取得可領取的免費每日獎勵。"
+	},
+	"explore_saleitem_trying_to_claim": {
+		"message": "每日獎勵領取中…"
+	},
+	"explore_saleitem_cant_claim": {
+		"message": "目前沒有可領取的每日獎勵。"
+	},
+	"explore_saleitem_next_item_time": {
+		"message": "下一個特賣物品可領取時間為：$datetime$",
+		"placeholders": {
+			"datetime": {
+				"content": "$1",
+				"example": "01.07.2024, 20:00:00",
+				"description": "Date and time format depends on locale set in browser"
+			}
+		}
+	},
+	"explore_saleitem_claim_failed": {
+		"message": "每日獎勵領取失敗。"
+	},
+	"explore_saleitem_success": {
+		"message": "已領取新的每日獎勵：$item$。",
+		"placeholders": {
+			"item": {
+				"content": "$1",
+				"example": "Unicorn Sticker"
+			}
+		}
 	},
 	"badges_idle_apps": {
 		"message": "可掉落應用數： $amount$",
@@ -296,6 +315,27 @@
 	},
 	"inventory_sell_at_title": {
 		"message": "列出最高購買訂單價格的項目\n顯示的價格是您收到的金額 (不含服務費)"
+	},
+	"inventory_badge_level": {
+		"message": "您的徽章等級：$level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "5"
+			}
+		}
+	},
+	"inventory_badge_foil_level": {
+		"message": "您的閃亮徽章等級：$level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "1"
+			}
+		}
+	},
+	"inventory_badge_none": {
+		"message": "沒有已合成徽章"
 	},
 	"options": {
 		"message": "選項"
@@ -459,7 +499,7 @@
 		"message": "在捆綁包頁面上顯示按鈕"
 	},
 	"options_button_gamehub": {
-		"message": "在社區顯示按鈕"
+		"message": "在社群顯示按鈕"
 	},
 	"options_button_gamecards": {
 		"message": "在遊戲主頁顯示 SteamDB 和商店頁面按鈕"
@@ -494,6 +534,9 @@
 	},
 	"options_enhancement_inventory_quick_sell_auto": {
 		"message": "自動接受快速出售"
+	},
+	"options_enhancement_inventory_badge_info": {
+		"message": "在交換卡片和擴充包上顯示徽章等級："
 	},
 	"options_display_market_price_others": {
 		"message": "在其他人的物品庫中顯示物品市集價格"
@@ -584,6 +627,9 @@
 	},
 	"options_builtin_queue_cheat": {
 		"message": "在特賣時加入自動探索佇列的按鈕"
+	},
+	"options_builtin_multibuy_redirect": {
+		"message": "購買缺少卡片後重定向回到遊戲卡片頁面"
 	},
 	"options_builtin_achievements_global": {
 		"message": "改進全球成就頁面"

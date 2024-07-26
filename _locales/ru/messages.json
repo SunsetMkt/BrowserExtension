@@ -72,7 +72,7 @@
 		"message": "Статистика онлайна"
 	},
 	"app_stats_online_now": {
-		"message": "Сейчас онлайн:"
+		"message": "В сети:"
 	},
 	"app_stats_peak_today": {
 		"message": "Пик за 24 часа:"
@@ -149,6 +149,9 @@
 			}
 		}
 	},
+	"agecheck_option_hint": {
+		"message": "Пропускайте эти страницы проверки возраста с помощью опции SteamDB"
+	},
 	"explore_auto_discover": {
 		"message": "Автоматический просмотр"
 	},
@@ -171,29 +174,45 @@
 			}
 		}
 	},
-	"explore_failed_to_clear": {
-		"message": "Не удалось просмотреть элемент списка №$current$, повтор попытки через пять секунд…",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
 	"explore_failed_to_clear_too_many": {
-		"message": "Не удалось просмотреть элемент списка №$current$ слишком много раз. Вы можете повторить попытку позже.",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "Не удалось создать новый список, повторная попытка через пять секунд…"
+		"message": "Слишком много попыток просмотра списка. Попробуйте позже."
 	},
 	"explore_finished": {
 		"message": "Список просмотрен."
+	},
+	"explore_saleitem_claim": {
+		"message": "Получить награду"
+	},
+	"explore_saleitem_claim_description": {
+		"message": "Получите бесплатную ежедневную награду, если она есть."
+	},
+	"explore_saleitem_trying_to_claim": {
+		"message": "Получение ежедневной награды…"
+	},
+	"explore_saleitem_cant_claim": {
+		"message": "В данный момент ежедневная награда отсутствует."
+	},
+	"explore_saleitem_next_item_time": {
+		"message": "Следующий предмет будет доступен: $datetime$",
+		"placeholders": {
+			"datetime": {
+				"content": "$1",
+				"example": "01.07.2024, 20:00:00",
+				"description": "Date and time format depends on locale set in browser"
+			}
+		}
+	},
+	"explore_saleitem_claim_failed": {
+		"message": "Не удалось получить ежедневную награду."
+	},
+	"explore_saleitem_success": {
+		"message": "Получена новая награда: $item$.",
+		"placeholders": {
+			"item": {
+				"content": "$1",
+				"example": "Unicorn Sticker"
+			}
+		}
 	},
 	"badges_idle_apps": {
 		"message": "Игр с карточками: $amount$",
@@ -296,6 +315,27 @@
 	},
 	"inventory_sell_at_title": {
 		"message": "Выставляет товар по самой высокой цене из запросов на покупку\n\nОтображаемая цена — это деньги, которые вы получаете (без комиссии)"
+	},
+	"inventory_badge_level": {
+		"message": "Уровень вашего значка: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "5"
+			}
+		}
+	},
+	"inventory_badge_foil_level": {
+		"message": "Уровень вашего металлического значка: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "1"
+			}
+		}
+	},
+	"inventory_badge_none": {
+		"message": "Значок не создан"
 	},
 	"options": {
 		"message": "Настройки"
@@ -495,6 +535,9 @@
 	"options_enhancement_inventory_quick_sell_auto": {
 		"message": "Автоматически соглашаться на быструю продажу"
 	},
+	"options_enhancement_inventory_badge_info": {
+		"message": "Отображать уровень значка в свойствах карточек и их наборов"
+	},
 	"options_display_market_price_others": {
 		"message": "Отображать рыночную цену товара в инвентаре других пользователей"
 	},
@@ -584,6 +627,9 @@
 	},
 	"options_builtin_queue_cheat": {
 		"message": "Добавить кнопку для автоматического просмотра списка рекомендаций во время распродаж"
+	},
+	"options_builtin_multibuy_redirect": {
+		"message": "Перенаправлять обратно на страницу игровых карточек после покупки недостающих карт"
 	},
 	"options_builtin_achievements_global": {
 		"message": "Улучшить страницу глобальных достижений"

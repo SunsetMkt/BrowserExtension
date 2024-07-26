@@ -149,6 +149,9 @@
 			}
 		}
 	},
+	"agecheck_option_hint": {
+		"message": "SteamDBには、これらの年齢確認ページを自動的にスキップするオプションがあります。"
+	},
 	"explore_auto_discover": {
 		"message": "自動検索"
 	},
@@ -171,29 +174,45 @@
 			}
 		}
 	},
-	"explore_failed_to_clear": {
-		"message": "キューのアイテム #$current$ のクリアに失敗しました。5 秒後にやり直します...",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
 	"explore_failed_to_clear_too_many": {
-		"message": "キューのアイテム #$current$ のクリアに複数回失敗しました。時間を空けてやり直してください。",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "キューの生成に失敗しました。5 秒後にやり直します..."
+		"message": "キューの消去に失敗しました。後でもう一度お試しください。"
 	},
 	"explore_finished": {
 		"message": "キューが探索されました。"
+	},
+	"explore_saleitem_claim": {
+		"message": "報酬を受け取る"
+	},
+	"explore_saleitem_claim_description": {
+		"message": "無料のデイリー報酬がある場合は受け取ってください。"
+	},
+	"explore_saleitem_trying_to_claim": {
+		"message": "デイリー報酬を受け取る"
+	},
+	"explore_saleitem_cant_claim": {
+		"message": "現在、受け取れるデイリー報酬はありません"
+	},
+	"explore_saleitem_next_item_time": {
+		"message": "次の報酬の受け取り可能日時:$datetime$",
+		"placeholders": {
+			"datetime": {
+				"content": "$1",
+				"example": "01.07.2024, 20:00:00",
+				"description": "Date and time format depends on locale set in browser"
+			}
+		}
+	},
+	"explore_saleitem_claim_failed": {
+		"message": "デイリー報酬の受け取りに失敗しました。"
+	},
+	"explore_saleitem_success": {
+		"message": "報酬を受け取りました:$item$",
+		"placeholders": {
+			"item": {
+				"content": "$1",
+				"example": "Unicorn Sticker"
+			}
+		}
 	},
 	"badges_idle_apps": {
 		"message": "アイドル状態にするアプリ数: $amount$",
@@ -296,6 +315,27 @@
 	},
 	"inventory_sell_at_title": {
 		"message": "最も高い買い注文の価格でアイテムを販売します。\n\n表示価格は手数料を差し引いた後の受取金額です。"
+	},
+	"inventory_badge_level": {
+		"message": "あなたのバッジレベル： $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "5"
+			}
+		}
+	},
+	"inventory_badge_foil_level": {
+		"message": "あなたのホイルバッジレベル： $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "1"
+			}
+		}
+	},
+	"inventory_badge_none": {
+		"message": "バッジが作成されていません"
 	},
 	"options": {
 		"message": "オプション"
@@ -495,6 +535,9 @@
 	"options_enhancement_inventory_quick_sell_auto": {
 		"message": "自動的にクイックセルを承認"
 	},
+	"options_enhancement_inventory_badge_info": {
+		"message": "トレーディングカードとブースターパックにバッジレベルを表示する"
+	},
 	"options_display_market_price_others": {
 		"message": "他のユーザーのインベントリにアイテムのマーケット価格を表示"
 	},
@@ -584,6 +627,9 @@
 	},
 	"options_builtin_queue_cheat": {
 		"message": "セール中に自動的にキューを探索するボタンを追加する"
+	},
+	"options_builtin_multibuy_redirect": {
+		"message": "残りのトレーディングカードを購入した後、トレーディングカードのページにリダイレクトします"
 	},
 	"options_builtin_achievements_global": {
 		"message": "グローバル実績ページの改善"

@@ -1,6 +1,6 @@
 {
 	"extension_description": {
-		"message": "Menambahkan tautan SteamDB dan fitur baru di Toko Steam dan komunitas. Melihat harga permainan terendah dan statistik.",
+		"message": "Menambahkan tautan SteamDB dan fitur baru di toko dan komunitas Steam. Lihat harga terendah gim dan statistiknya.",
 		"description": "This value can be up to 132 characters."
 	},
 	"steamdb_options": {
@@ -49,7 +49,7 @@
 		"description": "Visible on the mobile version"
 	},
 	"app_steamdb_rating_tooltip": {
-		"message": "$positive$ dari $total$ review adalah positif (Semua jenis Pembelian)",
+		"message": "$positive$ dari $total$ review adalah positif (semua jenis pembelian)",
 		"placeholders": {
 			"positive": {
 				"content": "$1",
@@ -78,13 +78,13 @@
 		"message": "Puncak 24 jam:"
 	},
 	"app_stats_alL_time_peak": {
-		"message": "Puncak sepanjang masa:"
+		"message": "Harga Tertinggi sepanjang masa:"
 	},
 	"app_stats_followers": {
 		"message": "Pengikut:"
 	},
 	"app_lowest_price": {
-		"message": "Harga Terendah tercacat SteamDB adalah <b>$price$</b>",
+		"message": "Harga Terendah tercatat SteamDB adalah <b>$price$</b>",
 		"placeholders": {
 			"price": {
 				"content": "$1",
@@ -171,29 +171,45 @@
 			}
 		}
 	},
-	"explore_failed_to_clear": {
-		"message": "Gagal untuk menghapus item antrian #$current$, mencoba lagi dalam Lima detik…",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
 	"explore_failed_to_clear_too_many": {
-		"message": "Gagal menghapus item antrian #$current$ terlalu banyak. Coba lagi nanti.",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "Gagal untuk menghasilkan antrian baru, coba lagi dalam Lima detik…"
+		"message": "Gagal untuk menghapus antrian berulang kali. Coba lagi nanti."
 	},
 	"explore_finished": {
 		"message": "Antrian telah dijelajahi."
+	},
+	"explore_saleitem_claim": {
+		"message": "Ambil hadiah"
+	},
+	"explore_saleitem_claim_description": {
+		"message": "Ambil hadiah harian gratis jika memang ada."
+	},
+	"explore_saleitem_trying_to_claim": {
+		"message": "Sedang mengambil hadiah harian…"
+	},
+	"explore_saleitem_cant_claim": {
+		"message": "Tidak ada hadiah harian yang dapat diambil saat ini."
+	},
+	"explore_saleitem_next_item_time": {
+		"message": "Hadiah selanjutnya pada: $datetime$",
+		"placeholders": {
+			"datetime": {
+				"content": "$1",
+				"example": "01.07.2024, 20:00:00",
+				"description": "Date and time format depends on locale set in browser"
+			}
+		}
+	},
+	"explore_saleitem_claim_failed": {
+		"message": "Gagal mengambil hadiah harian."
+	},
+	"explore_saleitem_success": {
+		"message": "Hadiah baru telah diambil: $item$.",
+		"placeholders": {
+			"item": {
+				"content": "$1",
+				"example": "Unicorn Sticker"
+			}
+		}
 	},
 	"badges_idle_apps": {
 		"message": "Aplikasi diam: $amount$",
@@ -346,7 +362,7 @@
 		"message": "Inventaris"
 	},
 	"options_header_trade_offers": {
-		"message": "Permintaan tukar-menukar"
+		"message": "Tawaran Barter"
 	},
 	"options_header_achievements": {
 		"message": "Pencapaian"
@@ -584,6 +600,9 @@
 	},
 	"options_builtin_queue_cheat": {
 		"message": "Tambah tombol untuk menjelajahi daftar temuanmu secara otomatis saat promo"
+	},
+	"options_builtin_multibuy_redirect": {
+		"message": "Arahkan kembali ke halaman kartu permainan setelah membeli kartu-kartu yang tersisa"
 	},
 	"options_builtin_achievements_global": {
 		"message": "Tingkatkan halaman pencapaian global"

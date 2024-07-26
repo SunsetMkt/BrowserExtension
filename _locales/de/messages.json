@@ -149,6 +149,9 @@
 			}
 		}
 	},
+	"agecheck_option_hint": {
+		"message": "In den SteamDB-Einstellungen kannst du das Überspringen der Alterskontrolle aktivieren"
+	},
 	"explore_auto_discover": {
 		"message": "Entdeckungsliste überspringen"
 	},
@@ -171,29 +174,45 @@
 			}
 		}
 	},
-	"explore_failed_to_clear": {
-		"message": "In der Entdeckungsliste konnte der $current$. Eintrag nicht abgeschlossen werden. Neuer Versuch in fünf Sekunden …",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
 	"explore_failed_to_clear_too_many": {
-		"message": "In der Entdeckungsliste konnte der $current$. Eintrag zu oft nicht abgeschlossen werden. Du kannst es später noch einmal versuchen.",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "Neue Entdeckungsliste konnte nicht generiert werden. Neuer Versuch in fünf Sekunden …"
+		"message": "Die Entdeckungsliste konnte zu oft nicht erkundet werden. Du kannst es später noch einmal versuchen."
 	},
 	"explore_finished": {
 		"message": "Die Entdeckungsliste wurde erkundet."
+	},
+	"explore_saleitem_claim": {
+		"message": "Belohnung einlösen"
+	},
+	"explore_saleitem_claim_description": {
+		"message": "Kostenlose tägliche Belohnung einlösen, sofern es eine gibt."
+	},
+	"explore_saleitem_trying_to_claim": {
+		"message": "Tägliche Belohnung wird eingelöst …"
+	},
+	"explore_saleitem_cant_claim": {
+		"message": "Derzeit gibt es keine tägliche Belohnung einzulösen."
+	},
+	"explore_saleitem_next_item_time": {
+		"message": "Verfügbarkeit des nächsten Gegenstands: $datetime$",
+		"placeholders": {
+			"datetime": {
+				"content": "$1",
+				"example": "01.07.2024, 20:00:00",
+				"description": "Date and time format depends on locale set in browser"
+			}
+		}
+	},
+	"explore_saleitem_claim_failed": {
+		"message": "Die tägliche Belohnung konnte nicht eingelöst werden."
+	},
+	"explore_saleitem_success": {
+		"message": "Neue Belohnung eingelöst: $item$.",
+		"placeholders": {
+			"item": {
+				"content": "$1",
+				"example": "Unicorn Sticker"
+			}
+		}
 	},
 	"badges_idle_apps": {
 		"message": "Apps zum Sammeln: $amount$",
@@ -296,6 +315,27 @@
 	},
 	"inventory_sell_at_title": {
 		"message": "Stellt den Gegenstand zum höchsten angegebenen Kaufauftragspreis ein\n\nDer angezeigte Preis ist das Geld, das du erhältst (ohne Gebühren)"
+	},
+	"inventory_badge_level": {
+		"message": "Level vom Abzeichen: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "5"
+			}
+		}
+	},
+	"inventory_badge_foil_level": {
+		"message": "Level vom Glanzabzeichen: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "1"
+			}
+		}
+	},
+	"inventory_badge_none": {
+		"message": "Kein Abzeichen hergestellt"
 	},
 	"options": {
 		"message": "Einstellungen"
@@ -495,6 +535,9 @@
 	"options_enhancement_inventory_quick_sell_auto": {
 		"message": "Schnellverkauf automatisch akzeptieren"
 	},
+	"options_enhancement_inventory_badge_info": {
+		"message": "Level vom Abzeichen bei Sammelkarten und Booster-Packs anzeigen"
+	},
 	"options_display_market_price_others": {
 		"message": "Marktpreis vom Gegenstand im Inventar anderer Nutzer anzeigen"
 	},
@@ -584,6 +627,9 @@
 	},
 	"options_builtin_queue_cheat": {
 		"message": "Button hinzufügen, um die Entdeckungsliste während eines Steam-Sales zu überspringen"
+	},
+	"options_builtin_multibuy_redirect": {
+		"message": "Nach dem Kauf verbleibender Karten zur Sammelkartenseite zurückkehren"
 	},
 	"options_builtin_achievements_global": {
 		"message": "Seite für globale Errungenschaften verbessern"

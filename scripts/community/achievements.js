@@ -113,6 +113,11 @@ function InitAchievements( items, isPersonal )
 		extraTabs.append( link );
 	}
 
+	if( !isPersonal )
+	{
+		extraTabs.append( CreateHideEarnedButton() );
+	}
+
 	extraTabs.append( CreateFoldButton( true ) );
 
 	if( window.innerWidth < 600 )
@@ -242,11 +247,15 @@ function InitAchievements( items, isPersonal )
 
 	function OnToggleAllGamesClick( e )
 	{
+		e.preventDefault();
+
 		ToggleDetailsElements( e, document.querySelector( '.steamdb_achievements_container' ) );
 	}
 
 	function OnToggleGameClick( e )
 	{
+		e.preventDefault();
+
 		ToggleDetailsElements( e, this.closest( '.steamdb_achievements_group' ) );
 	}
 
@@ -269,6 +278,41 @@ function InitAchievements( items, isPersonal )
 			<path d="m15 19-3-3-3 3"/>
 			<path d="m15 5-3 3-3-3"/>
 		</svg>`;
+
+		return btn;
+	}
+
+	function OnToggleEarnedClick( e )
+	{
+		e.preventDefault();
+
+		const container = document.getElementById( 'mainContents' );
+		const state = container.classList.contains( 'steamdb_hide_earned_achievements' );
+
+		const ToggleEarned = () =>
+		{
+			container.classList.toggle( 'steamdb_hide_earned_achievements', !state );
+		};
+
+		StartViewTransition( ToggleEarned );
+
+		SessionStorageSet( 'steamdb_ach_hide_earned', state );
+	}
+
+	function CreateHideEarnedButton()
+	{
+		const btn = document.createElement( 'button' );
+		btn.type = 'button';
+		btn.className = 'steamdb_done_button';
+		btn.addEventListener( 'click', OnToggleEarnedClick );
+
+		// https://lucide.dev/icons/check-check
+		btn.innerHTML = `
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M18 6 7 17l-5-5"/>
+				<path d="m22 10-7.5 7.5L13 16"/>
+			</svg>
+		`;
 
 		return btn;
 	}
@@ -436,7 +480,6 @@ function InitAchievements( items, isPersonal )
 			const image = document.createElement( 'img' );
 			image.src = `${applicationConfig.MEDIA_CDN_COMMUNITY_URL}images/apps/${appid}/${!isPersonal || player.unlock ? achievement.icon : achievement.icon_gray}`;
 			image.className = 'steamdb_achievement_image';
-			image.loading = 'lazy';
 			element.append( image );
 
 			const nameContainer = document.createElement( 'div' );
@@ -490,22 +533,21 @@ function InitAchievements( items, isPersonal )
 
 				if( player.unlock )
 				{
+					element.classList.add( 'steamdb_earned_achievement' );
+
 					checkmark.innerHTML = `
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
 							<path d="M31.09 4.38L13 22.46L5.41 14.88L1.88 18.41L13 29.54L34.62 7.91L31.09 4.38Z"/>
 						</svg>
 					`;
-
 					if( achievement.global_unlock < 0.1 )
 					{
 						image.classList.add( 'steamdb_achievement_image_glow' );
 					}
 				}
 
-				const overlay = document.createElement( 'div' );
-				overlay.className = 'steamdb_achievement_global_progress_overlay';
-				overlay.style.width = `${Math.round( achievement.global_unlock * 100 )}%`;
-				element.append( overlay );
+				element.classList.add( 'steamdb_achievement_global_progress_overlay' );
+				element.style.setProperty( '--steamdb-progress', `${Math.round( achievement.global_unlock * 100 )}%` );
 
 				return element;
 			}
@@ -557,8 +599,83 @@ function InitAchievements( items, isPersonal )
 			return element;
 		};
 
+		let counter = 0;
 		const newContainer = document.createElement( 'div' );
 		newContainer.className = 'steamdb_achievements_container';
+
+		const searchField = document.createElement( 'input' );
+		searchField.maxLength = 255;
+		searchField.type = 'search';
+		searchField.placeholder = _t( 'search' );
+		searchField.setAttribute( 'accesskey', '/' );
+
+		const searchFieldContainer = document.createElement( 'div' );
+		searchFieldContainer.className = 'steamdb_achievement_search';
+		searchFieldContainer.append( searchField );
+		newContainer.append( searchFieldContainer );
+
+		searchField.addEventListener( 'input', function()
+		{
+			const searchVal = this.value.trim().toUpperCase();
+			const achievementGroups = document.querySelectorAll( '.steamdb_achievements_group' );
+
+			StartViewTransition( () =>
+			{
+				if( searchVal.length === 0 )
+				{
+					for( const group of achievementGroups )
+					{
+						for( const achievement of group.querySelectorAll( '.steamdb_achievement' ) )
+						{
+							achievement.hidden = false;
+						}
+
+						group.hidden = false;
+					}
+
+					return;
+				}
+
+				for( const group of achievementGroups )
+				{
+					let count = 0;
+
+					for( const achievement of group.querySelectorAll( '.steamdb_achievement' ) )
+					{
+						const title = achievement.querySelector( 'h3' ).textContent;
+						const description = achievement.querySelector( 'h5' ).textContent;
+						const found = title.toUpperCase().includes( searchVal ) || description.toUpperCase().includes( searchVal );
+						achievement.hidden = !found;
+
+						if( found )
+						{
+							count++;
+						}
+					}
+
+					group.hidden = count === 0;
+				}
+			} );
+		} );
+
+		document.addEventListener( 'keydown', ( e ) =>
+		{
+			if( e.ctrlKey || e.metaKey )
+			{
+				return;
+			}
+
+			if( [ 'INPUT', 'TEXTAREA', 'SELECT', 'BUTTON' ].includes( e.target.tagName ) )
+			{
+				return;
+			}
+
+			if( e.code === 'Slash' || e.code === 'KeyS' || e.key === '/' || e.key === 's' )
+			{
+				e.preventDefault();
+				searchField.focus();
+			}
+		} );
 
 		for( let updateId = 0; updateId < achievementUpdates.length; updateId++ )
 		{
@@ -651,19 +768,25 @@ function InitAchievements( items, isPersonal )
 				const lockedAchievementsDetails = document.createElement( 'details' );
 				const unlockedAchievementsDetails = document.createElement( 'details' );
 
+				unlockedAchievementsDetails.id = `steamdb_ach_details_${appid}_${counter++}`;
+				lockedAchievementsDetails.id = `steamdb_ach_details_${appid}_${counter++}`;
+
+				lockedAchievementsDetails.addEventListener( 'toggle', OnToggleDetails );
+				unlockedAchievementsDetails.addEventListener( 'toggle', OnToggleDetails );
+
 				update.earnedDetailsElement = unlockedAchievementsDetails;
 
 				{
 					const unlockedAchievementsSummary = document.createElement( 'summary' );
 					unlockedAchievementsSummary.textContent = _t( 'achievements_unlocked_count', [ update.earned.toString() ] );
 					unlockedAchievementsDetails.className = 'steamdb_achievements_list';
-					unlockedAchievementsDetails.open = true;
+					unlockedAchievementsDetails.open = !IsSessionStorageSet( unlockedAchievementsDetails.id );
 					unlockedAchievementsDetails.append( unlockedAchievementsSummary );
 
 					const lockedAchievementsSummary = document.createElement( 'summary' );
 					lockedAchievementsSummary.textContent = _t( 'achievements_locked_count', [ ( update.achievementData.length - update.earned ).toString() ] );
 					lockedAchievementsDetails.className = 'steamdb_achievements_list';
-					lockedAchievementsDetails.open = true;
+					lockedAchievementsDetails.open = !IsSessionStorageSet( lockedAchievementsDetails.id );
 					lockedAchievementsDetails.append( lockedAchievementsSummary );
 				}
 
@@ -792,7 +915,13 @@ function InitAchievements( items, isPersonal )
 
 				oldAchievementRows[ 0 ].insertAdjacentElement( 'beforebegin', newContainer );
 
-				document.getElementById( 'mainContents' ).classList.add( 'steamdb_global_achievements_page' );
+				const container = document.getElementById( 'mainContents' );
+				container.classList.add( 'steamdb_global_achievements_page' );
+
+				if( IsSessionStorageSet( 'steamdb_ach_hide_earned' ) )
+				{
+					container.classList.add( 'steamdb_hide_earned_achievements' );
+				}
 			}
 
 			gameLogoElement.hidden = true;
@@ -804,14 +933,7 @@ function InitAchievements( items, isPersonal )
 			document.querySelector( '.es-sortbox' )?.setAttribute( 'hidden', true );
 		};
 
-		if( document.startViewTransition )
-		{
-			document.startViewTransition( ReplaceAchievements );
-		}
-		else
-		{
-			ReplaceAchievements();
-		}
+		StartViewTransition( ReplaceAchievements );
 
 		if( sortButton )
 		{
@@ -1046,14 +1168,7 @@ function HookSortButton( sortButton, achievementUpdates, oldAchievementRows, Cre
 					}
 				};
 
-				if( document.startViewTransition )
-				{
-					document.startViewTransition( RedrawSortedAchievements );
-				}
-				else
-				{
-					RedrawSortedAchievements();
-				}
+				StartViewTransition( RedrawSortedAchievements );
 			} )
 			.catch( e =>
 			{
@@ -1061,4 +1176,62 @@ function HookSortButton( sortButton, achievementUpdates, oldAchievementRows, Cre
 				alert( `Failed to sort achievements: ${e.message}` );
 			} );
 	}, { once: true } );
+}
+
+function IsSessionStorageSet( key )
+{
+	try
+	{
+		return !!sessionStorage.getItem( key );
+	}
+	catch
+	{
+		return false;
+	}
+}
+
+function SessionStorageSet( key, state )
+{
+	try
+	{
+		if( state )
+		{
+			sessionStorage.removeItem( key );
+		}
+		else
+		{
+			sessionStorage.setItem( key, '1' );
+		}
+	}
+	catch
+	{
+		//
+	}
+}
+
+function OnToggleDetails()
+{
+	SessionStorageSet( this.id, this.open );
+}
+
+function StartViewTransition( callback )
+{
+	if( document.startViewTransition )
+	{
+		document.startViewTransition( () =>
+		{
+			try
+			{
+				callback();
+			}
+			catch( e )
+			{
+				console.error( '[SteamDB]', e );
+			}
+		} );
+	}
+	else
+	{
+		callback();
+	}
 }

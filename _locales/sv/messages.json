@@ -171,29 +171,45 @@
 			}
 		}
 	},
-	"explore_failed_to_clear": {
-		"message": "Misslyckades med köartikel #$current$, försöker igen om fem sekunder…",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
 	"explore_failed_to_clear_too_many": {
-		"message": "Köobjekt #$current$ misslyckades för många gånger. Du kan försöka igen senare.",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "Misslyckades med att generera ny kö, försöker igen om fem sekunder…"
+		"message": "Misslyckades med att utforska kön trots upprepade försök. Du kan försöka igen senare."
 	},
 	"explore_finished": {
 		"message": "Kön har utforskats."
+	},
+	"explore_saleitem_claim": {
+		"message": "Hämta gratis belöning"
+	},
+	"explore_saleitem_claim_description": {
+		"message": "Hämta den dagliga gratisbelöningen om det finns en."
+	},
+	"explore_saleitem_trying_to_claim": {
+		"message": "Hämta den dagliga belöningen…"
+	},
+	"explore_saleitem_cant_claim": {
+		"message": "Ingen daglig belöning att hämta just nu."
+	},
+	"explore_saleitem_next_item_time": {
+		"message": "Nästa artikel tillgänglig: $datetime$",
+		"placeholders": {
+			"datetime": {
+				"content": "$1",
+				"example": "01.07.2024, 20:00:00",
+				"description": "Date and time format depends on locale set in browser"
+			}
+		}
+	},
+	"explore_saleitem_claim_failed": {
+		"message": "Misslyckades med att hämta den dagliga belöningen."
+	},
+	"explore_saleitem_success": {
+		"message": "Ny belöning tagits: $item$.",
+		"placeholders": {
+			"item": {
+				"content": "$1",
+				"example": "Unicorn Sticker"
+			}
+		}
 	},
 	"badges_idle_apps": {
 		"message": "Appar att idle:a: $amount$",
@@ -584,6 +600,9 @@
 	},
 	"options_builtin_queue_cheat": {
 		"message": "Lägg till en knapp för att automatiskt upptäcka kön under försäljning"
+	},
+	"options_builtin_multibuy_redirect": {
+		"message": "Omdirigera tillbaka till spelkortssidan efter köp av kvarvarande kort"
 	},
 	"options_builtin_achievements_global": {
 		"message": "Förbättra sidan för globala prestationer"

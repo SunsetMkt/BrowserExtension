@@ -62,7 +62,7 @@
 		}
 	},
 	"app_depots_update": {
-		"message": "마지막 갱신일:"
+		"message": "최근 업데이트:"
 	},
 	"app_depots_updated_short": {
 		"message": "업데이트됨",
@@ -72,16 +72,16 @@
 		"message": "온라인 통계"
 	},
 	"app_stats_online_now": {
-		"message": "현재 온라인 :"
+		"message": "현재 온라인:"
 	},
 	"app_stats_peak_today": {
-		"message": "24시간 동안의 최고 접속량"
+		"message": "24시간 동시접속자:"
 	},
 	"app_stats_alL_time_peak": {
-		"message": "최고 동시접속자"
+		"message": "최고 동시접속자:"
 	},
 	"app_stats_followers": {
-		"message": "팔로워"
+		"message": "팔로워:"
 	},
 	"app_lowest_price": {
 		"message": "SteamDB에 기록된 최저가격: <b>$price$</b>",
@@ -170,27 +170,6 @@
 				"example": "12"
 			}
 		}
-	},
-	"explore_failed_to_clear": {
-		"message": "대기열 아이템 #$current$을 지우는 데 실패하였습니다. 5초 뒤 다시 시도하세요...",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_clear_too_many": {
-		"message": "너무 많이 대기열 아이템 #$current$을 지우는 데 실패하였습니다. 나중에 다시 시도하세요.",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "새로운 대기열을 생성하는 데 실패하였습니다. 5초 뒤 다시 시도하세요..."
 	},
 	"explore_finished": {
 		"message": "대기열이 탐색이 완료되었습니다."

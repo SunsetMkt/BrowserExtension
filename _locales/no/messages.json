@@ -149,6 +149,9 @@
 			}
 		}
 	},
+	"agecheck_option_hint": {
+		"message": "SteamDB har en innstilling for å automatisk hoppe over disse aldersjekk-sidene"
+	},
 	"explore_auto_discover": {
 		"message": "Auto-oppdag"
 	},
@@ -171,29 +174,45 @@
 			}
 		}
 	},
-	"explore_failed_to_clear": {
-		"message": "Kunne ikke fjerne kø-elementet #$current$, prøver igjen om fem sekunder…",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
 	"explore_failed_to_clear_too_many": {
-		"message": "Klarte ikke å fjerne kø-elementet #$current$ for mange ganger. Du kan prøve igjen senere.",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "Kunne ikke generere ny kø, prøver igjen om fem sekunder…"
+		"message": "Kunne ikke tømme køen for mange ganger. Du kan prøve igjen senere."
 	},
 	"explore_finished": {
 		"message": "Kø har blitt utforsket."
+	},
+	"explore_saleitem_claim": {
+		"message": "Krev belønning"
+	},
+	"explore_saleitem_claim_description": {
+		"message": "Krev inn den daglige belønningen hvis det er en."
+	},
+	"explore_saleitem_trying_to_claim": {
+		"message": "Krever den daglige belønningen…"
+	},
+	"explore_saleitem_cant_claim": {
+		"message": "Ingen daglig belønning å kreve for øyeblikket."
+	},
+	"explore_saleitem_next_item_time": {
+		"message": "Neste gjenstand tilgjengelig: $datetime$",
+		"placeholders": {
+			"datetime": {
+				"content": "$1",
+				"example": "01.07.2024, 20:00:00",
+				"description": "Date and time format depends on locale set in browser"
+			}
+		}
+	},
+	"explore_saleitem_claim_failed": {
+		"message": "Kunne ikke kreve den daglige belønningen."
+	},
+	"explore_saleitem_success": {
+		"message": "Ny belønning krevet: $item$.",
+		"placeholders": {
+			"item": {
+				"content": "$1",
+				"example": "Unicorn Sticker"
+			}
+		}
 	},
 	"badges_idle_apps": {
 		"message": "Apper å la være åpne: $amount$",
@@ -296,6 +315,27 @@
 	},
 	"inventory_sell_at_title": {
 		"message": "Legger ut gjenstanden for høyeste oppgitte kjøpsprisspris\n\nVist pris er pengene du mottar (uten gebyrer)"
+	},
+	"inventory_badge_level": {
+		"message": "Ditt emblemnivå: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "5"
+			}
+		}
+	},
+	"inventory_badge_foil_level": {
+		"message": "Ditt foilemblem nivå: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "1"
+			}
+		}
+	},
+	"inventory_badge_none": {
+		"message": "Ingen emblem laget"
 	},
 	"options": {
 		"message": "Innstillinger"
@@ -495,6 +535,9 @@
 	"options_enhancement_inventory_quick_sell_auto": {
 		"message": "Automatisk godta hurtigsalg"
 	},
+	"options_enhancement_inventory_badge_info": {
+		"message": "Vis emblemnivå på handelskort og booster-pakker"
+	},
 	"options_display_market_price_others": {
 		"message": "Vis markedspris for gjenstander i andre brukeres lager"
 	},
@@ -584,6 +627,9 @@
 	},
 	"options_builtin_queue_cheat": {
 		"message": "Legg til en knapp for å automatisk oppdage køen under salg"
+	},
+	"options_builtin_multibuy_redirect": {
+		"message": "Omdirigerer tilbake til spillkort-siden etter å ha kjøpt de resterende kortene"
 	},
 	"options_builtin_achievements_global": {
 		"message": "Forbedre global prestasjonsside"

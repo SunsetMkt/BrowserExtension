@@ -149,6 +149,9 @@
 			}
 		}
 	},
+	"agecheck_option_hint": {
+		"message": "У SteamDB є можливість автоматично пропускати ці сторінки перевірки віку"
+	},
 	"explore_auto_discover": {
 		"message": "Автодослідження"
 	},
@@ -171,29 +174,45 @@
 			}
 		}
 	},
-	"explore_failed_to_clear": {
-		"message": "Не вдалося очистити елемент черги №$current$, спробуйте ще раз за п’ять секунд…",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
 	"explore_failed_to_clear_too_many": {
-		"message": "Забагато спроб прибрати елемент №$current$ з черги. Спробуйте пізніше.",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "Не вдалося згенерувати нову чергу, спробуйте ще раз за п’ять секунд…"
+		"message": "Забагато спроб очищення черги. Спробуйте пізніше."
 	},
 	"explore_finished": {
 		"message": "Чергу досліджено."
+	},
+	"explore_saleitem_claim": {
+		"message": "Отримати нагороду"
+	},
+	"explore_saleitem_claim_description": {
+		"message": "Отримайте безкоштовну щоденну нагороду, якщо вона є."
+	},
+	"explore_saleitem_trying_to_claim": {
+		"message": "Отримуємо щоденну нагороду…"
+	},
+	"explore_saleitem_cant_claim": {
+		"message": "Наразі, щоденна нагорода недоступна."
+	},
+	"explore_saleitem_next_item_time": {
+		"message": "Наступний предмет стане доступний: $datetime$",
+		"placeholders": {
+			"datetime": {
+				"content": "$1",
+				"example": "01.07.2024, 20:00:00",
+				"description": "Date and time format depends on locale set in browser"
+			}
+		}
+	},
+	"explore_saleitem_claim_failed": {
+		"message": "Не вдалося отримати щоденну нагороду."
+	},
+	"explore_saleitem_success": {
+		"message": "Отримано нову нагороду: $item$.",
+		"placeholders": {
+			"item": {
+				"content": "$1",
+				"example": "Unicorn Sticker"
+			}
+		}
 	},
 	"badges_idle_apps": {
 		"message": "Застосунків з картками: $amount$",
@@ -296,6 +315,27 @@
 	},
 	"inventory_sell_at_title": {
 		"message": "Виставляє товар за найвищою ціною із запитів на купівлю\n\nПоказана ціна - це сума, яку ви отримаєте (без врахування комісій)"
+	},
+	"inventory_badge_level": {
+		"message": "Рівень вашого значка: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "5"
+			}
+		}
+	},
+	"inventory_badge_foil_level": {
+		"message": "Рівень вашого лискучого значка: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "1"
+			}
+		}
+	},
+	"inventory_badge_none": {
+		"message": "Значок не зібрано"
 	},
 	"options": {
 		"message": "Параметри"
@@ -495,6 +535,9 @@
 	"options_enhancement_inventory_quick_sell_auto": {
 		"message": "Автоматично приймати швидкий продаж"
 	},
+	"options_enhancement_inventory_badge_info": {
+		"message": "Показувати рівень значка на колекційних картках та комплектах"
+	},
 	"options_display_market_price_others": {
 		"message": "Показувати ринкову ціну предмета в інвентарях інших користувачів"
 	},
@@ -584,6 +627,9 @@
 	},
 	"options_builtin_queue_cheat": {
 		"message": "Додати кнопку для автоматичного перегляду черги знахідок під час розпродажів"
+	},
+	"options_builtin_multibuy_redirect": {
+		"message": "Перенаправити до сторінки з картками після їх купівлі"
 	},
 	"options_builtin_achievements_global": {
 		"message": "Поліпшити сторінку глобальних досягнень"

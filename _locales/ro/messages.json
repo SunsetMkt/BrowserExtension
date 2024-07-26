@@ -106,7 +106,7 @@
 		}
 	},
 	"app_lowest_price_limited": {
-		"message": "SteamDB cel mai mic preț înregistrat este <b>$price$</b> și peste 2 ani este <b>$price_limited$</b>",
+		"message": "SteamDB cel mai mic preț înregistrat este <b>$price$</b> și în ultimii 2 ani este <b>$price_limited$</b>",
 		"placeholders": {
 			"price": {
 				"content": "$1",
@@ -149,6 +149,9 @@
 			}
 		}
 	},
+	"agecheck_option_hint": {
+		"message": "SteamDB are opțiunea de a sări automat peste paginile de verificare a vârstei"
+	},
 	"explore_auto_discover": {
 		"message": "Auto-descoperire"
 	},
@@ -171,29 +174,45 @@
 			}
 		}
 	},
-	"explore_failed_to_clear": {
-		"message": "Nu s-a reușit ștergerea cozii elementului #$current$, încercăm din nou în cinci secunde…",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
 	"explore_failed_to_clear_too_many": {
-		"message": "Eroare la ștergerea cozii de element #$current$ de prea multe ori. Puteți încerca din nou mai târziu.",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "Generarea unei noi cozi a eșuat, se încearcă din nou în cinci secunde…"
+		"message": "Ștergerea cozii a eșuat de prea multe ori. Poți încerca din nou mai târziu."
 	},
 	"explore_finished": {
 		"message": "Lista a fost explorată."
+	},
+	"explore_saleitem_claim": {
+		"message": "Colectează recompensa"
+	},
+	"explore_saleitem_claim_description": {
+		"message": "Colectează recompensa zilnică dacă există una."
+	},
+	"explore_saleitem_trying_to_claim": {
+		"message": "Colectarea recompensei zilnice…"
+	},
+	"explore_saleitem_cant_claim": {
+		"message": "Nu există recompense zilnice pentru a fi obținute în acest moment."
+	},
+	"explore_saleitem_next_item_time": {
+		"message": "Următorul articol disponibil: $datetime$",
+		"placeholders": {
+			"datetime": {
+				"content": "$1",
+				"example": "01.07.2024, 20:00:00",
+				"description": "Date and time format depends on locale set in browser"
+			}
+		}
+	},
+	"explore_saleitem_claim_failed": {
+		"message": "Nu s-a putut obține recompensa zilnică."
+	},
+	"explore_saleitem_success": {
+		"message": "Recompensă nouă obținută: $item$.",
+		"placeholders": {
+			"item": {
+				"content": "$1",
+				"example": "Unicorn Sticker"
+			}
+		}
 	},
 	"badges_idle_apps": {
 		"message": "Aplicații pentru a farma: $amount$",
@@ -584,6 +603,9 @@
 	},
 	"options_builtin_queue_cheat": {
 		"message": "Adăugați un buton pentru a descoperi automat coada de așteptare în timpul reducerilor"
+	},
+	"options_builtin_multibuy_redirect": {
+		"message": "Înapoi la pagina cardurilor de joc după ce s-au cumpărat cardurile rămase"
 	},
 	"options_builtin_achievements_global": {
 		"message": "Îmbunătățește pagina de realizări globale"

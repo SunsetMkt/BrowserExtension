@@ -1,6 +1,6 @@
 {
 	"extension_description": {
-		"message": "لینک های SteamDB و قابلیت های جدیدی را در قسمت های Store و Community استیم اضافه می کند. آمار و ارزان‌ترین قیمت بازی ها را مشاهده کنید.",
+		"message": "لینک های SteamDB و قابلیت های جدیدی را در قسمت های Store و Community اضافه می کند. آمار و ارزان‌ترین قیمت بازی ها را مشاهده کنید.",
 		"description": "This value can be up to 132 characters."
 	},
 	"steamdb_options": {
@@ -78,7 +78,7 @@
 		"message": "بیشترین در 24 ساعت:"
 	},
 	"app_stats_alL_time_peak": {
-		"message": "بیشترین ثبت شده:"
+		"message": "اوج تمام دوران:"
 	},
 	"app_stats_followers": {
 		"message": "دنبال کنندگان:"
@@ -106,7 +106,7 @@
 		}
 	},
 	"app_lowest_price_limited": {
-		"message": "کمترین قیمت ثبت شده <b>$price$</b> و کمترین قیمت در 2 سال گذشته <b>$price_limited$</b> است",
+		"message": "کمترین قیمت ثبت شده <b>$price$</b> است و کمترین قیمت در 2 سال گذشته <b>$price_limited$</b> است",
 		"placeholders": {
 			"price": {
 				"content": "$1",
@@ -149,11 +149,14 @@
 			}
 		}
 	},
+	"agecheck_option_hint": {
+		"message": "SteamDB گزینه‌ای برای ردکردن صفحات بررسی سِن به صورت خودکار دارد"
+	},
 	"explore_auto_discover": {
 		"message": "اکتشاف خودکار"
 	},
 	"explore_auto_discover_description": {
-		"message": "به‌طور خودکار صف را کشف کنید تا کارت رویداد را دریافت کنید."
+		"message": "به‌طور خودکار لیست را کشف کنید تا یک کارت رویداد دریافت کنید."
 	},
 	"explore_generating": {
 		"message": "درحال ساخت صف اکتشاف جدید، این عملیات ممکن است درصورت وجود فشار بار زیاد بر روی سرور های استیم شکست بخورد…"
@@ -171,29 +174,45 @@
 			}
 		}
 	},
-	"explore_failed_to_clear": {
-		"message": "خطا در روند پاکسازی آیتم شماره $current$ از لیست، تللاش دوباره در 5 ثانیه دیگر…",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
 	"explore_failed_to_clear_too_many": {
-		"message": "خطای بیش از حد در روند پاکسازی ایتم شماره #$current$، می توانید بعدا دوباره امتحان کنید.",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "خطا در ایجاد لیست جدید، تلاش دوباره در 5 ثانیه دیگر…"
+		"message": "خطای بیش از حد در پاک‌سازی صف. می‌توانید بعدا تلاش کنید."
 	},
 	"explore_finished": {
 		"message": "صف بررسی شده است."
+	},
+	"explore_saleitem_claim": {
+		"message": "دریافت پاداش"
+	},
+	"explore_saleitem_claim_description": {
+		"message": "دریافت پاداش روزانه در صورت وجود."
+	},
+	"explore_saleitem_trying_to_claim": {
+		"message": "در حال دریافت پاداش روزانه…"
+	},
+	"explore_saleitem_cant_claim": {
+		"message": "در حال حاضر پاداشی برای دریافت وجود ندارد."
+	},
+	"explore_saleitem_next_item_time": {
+		"message": "کالای بعدی در دسترس: $datetime$",
+		"placeholders": {
+			"datetime": {
+				"content": "$1",
+				"example": "01.07.2024, 20:00:00",
+				"description": "Date and time format depends on locale set in browser"
+			}
+		}
+	},
+	"explore_saleitem_claim_failed": {
+		"message": "خطا در دریافت پاداش روزانه."
+	},
+	"explore_saleitem_success": {
+		"message": "پاداش جدید دریافت شد: $item$.",
+		"placeholders": {
+			"item": {
+				"content": "$1",
+				"example": "Unicorn Sticker"
+			}
+		}
 	},
 	"badges_idle_apps": {
 		"message": "بازی های دارای کارت: $amount$",
@@ -270,7 +289,7 @@
 		"message": "مرتب‌سازی براساس زمان"
 	},
 	"achievements_groups_by_steamhunters": {
-		"message": "دستاوردها_ بر اساس- گروه های-steamhunters.",
+		"message": "گروه های دستاورد ها توسط Steam Hunters ارائه داده شده از طریق SteamDB.",
 		"description": "Steam Hunters is the name of https://steamhunters.com/ please do not translate it"
 	},
 	"inventory_list_at": {
@@ -295,7 +314,7 @@
 		"message": "ثبت آیتم به کمترین قیمت فروش ثبت شده\n\n قیمت نمایش داده شده مبلغی است که شما دریافت می کنید (بدون کارمزد)"
 	},
 	"inventory_sell_at_title": {
-		"message": "ثبت آیتم به بیشترین قیمت درخواست شده\n\n قیمت نمایش داده شده مبلغی دریافتی شما می باشد (بدون کارمزد)"
+		"message": "ثبت آیتم به بیشترین قیمت درخواست شده\n\n قیمت نمایش داده شده مبلغ دریافتی شما (بدون کارمزد) می باشد"
 	},
 	"options": {
 		"message": "تنظیمات"
@@ -325,7 +344,7 @@
 		"message": "⚠️ اعطای دسترسی ها"
 	},
 	"options_footer1": {
-		"message": "ساخته شده با 💙 توسط <a href=\"https://steamdb.info\" target=\"_blank\">SteamDB</a>."
+		"message": "ساخته شده با 💙 توسط <a href=\"https://steamdb.info\" target=\"_blank\">SteamDB</a> و مردم."
 	},
 	"options_footer2": {
 		"message": "این یک پروژه <a href=\"https://github.com/SteamDatabase/BrowserExtension\" target=\"_blank\">متن باز</a> است، با تشکر از تمامی مشارکت کنندگان!"
@@ -358,13 +377,13 @@
 		"message": "توضیحات"
 	},
 	"options_website_explanation1": {
-		"message": "زمانی که این گزینه فعال باشد، افزونه مقداری از اطلاعات کاربر(مانند ویش‌لیست، بازی های خریداری شده،دنبال شده، نادیده گرفته شده و محصولات داخل سبد خرید) را از <a href=\"https://store.steampowered.com/dynamicstore/userdata/\" target=\"_blank\">فروشگاه استیم</a> درخواست می کند و از آن برای هایلایت کردن در سایت استفاده خواهد کرد."
+		"message": "زمانی که این گزینه فعال باشد، این افزونه مقداری از اطلاعات کاربر (مانند لیست آرزو ها، چیز هایی که صاحبشان هستید، دنبال شدگانتان،محصولات نادیده گرفته شده و محصولات داخل سبد خرید) را از <a href=\"https://store.steampowered.com/dynamicstore/userdata/\" target=\"_blank\">فروشگاه استیم</a> درخواست می کند و از آن برای هایلایت کردن در سایت استفاده خواهد کرد."
 	},
 	"options_website_explanation2": {
-		"message": "برای این کار باید به حساب خود وارد شوید."
+		"message": "برای این کار باید به حساب خود در Steam وارد شوید."
 	},
 	"options_website_explanation3": {
-		"message": "این اطلاعات تنها در مرورگر شما ذخیره میشود و هرگز به جایی از جمله بک اند SteamDB ارسال نخواهد شد."
+		"message": "این اطلاعات تنها در مرورگر شما ذخیره میشود و هرگز به جایی از جمله سرور های SteamDB ارسال نخواهد شد."
 	},
 	"options_website_explanation4": {
 		"message": "برای جلوگیری از ارسال درخواست های بیش از حد به فروشگاه استیم، اطلاعات کاربری شما در داخل حافظه محلی مرورگر شما ذخیره شده است."
@@ -397,7 +416,7 @@
 		}
 	},
 	"options_extra_data_players": {
-		"message": "زمانی که گزینه $options_online_stats$ یا $options_steamdb_last_update$ فعال باشند، این افزونه یک درخواست امن به $domain$ ارسال می‌کند تا تعداد بازیکنان همزمان و آخرین به روز رسانی بازی را دریافت کند.",
+		"message": "زمانی که گزینه های $options_online_stats$ یا $options_steamdb_last_update$ فعال باشند، این افزونه یک درخواست امن به $domain$ ارسال می‌کند تا تعداد بازیکنان همزمان و آخرین به روز رسانی بازی را دریافت کند.",
 		"placeholders": {
 			"domain": {
 				"content": "steamdb.info",
@@ -441,13 +460,13 @@
 		}
 	},
 	"options_steamdb_lowest_price": {
-		"message": "نمایش کمترین قیمت ثبت شده در صفحات بازی ها و برنامه ها"
+		"message": "نمایش کمترین قیمت ثبت شده در صفحات محصولات"
 	},
 	"options_online_stats": {
-		"message": "نمایش تعداد بازیکن آنلاین و رکورد بیشترین مقدار بازیکن آنلاین بر روی صفحات محصول"
+		"message": "نمایش تعداد بازیکنان آنلاین و رکورد بیشترین مقدار بازیکن آنلاین بر روی صفحات محصول"
 	},
 	"options_steamdb_last_update": {
-		"message": "نمایش آخرین بروزرساتی برو روی صفحات محصول"
+		"message": "نمایش آخرین بروزرساتی روی صفحات محصول"
 	},
 	"options_button_app": {
 		"message": "نمایش دکمه بر روی صفحات محصول"
@@ -553,7 +572,7 @@
 		"message": "نمایش درصد دستاورد های باز شده در کل"
 	},
 	"options_modernized_achievements": {
-		"message": "قالب جدید"
+		"message": "قالب مدرن"
 	},
 	"options_achievement_groups": {
 		"message": "دسته بندی دستاورد ها براساس داده های Steam Hunters",
@@ -563,13 +582,13 @@
 		"message": "قرار دادن دستاورد های پنهان پشت اسپویلر"
 	},
 	"options_prevent_store_images": {
-		"message": "متوقف کردن بارگذاری تصاویر بر روی صفحات محصول"
+		"message": "متوقف کردن بارگذاری تصاویر بر روی صفحات محصولات"
 	},
 	"options_prevent_store_images_description": {
-		"message": "بعضی از توسعه دهندگان در توضیحات محصولشان از تصاویر با حجم زیاد استقاده کردند که بارگذاری این تصاویر مقداری زمان می برد، برای بارگذاری شدن عکس بر روی آن کلیک کنید"
+		"message": "بعضی از توسعه دهندگان در توضیحات محصولشان از تصاویر با حجم زیاد استفاده کردند که بارگذاری این تصاویر مقداری زمان می برد، برای بارگذاری شدن عکس بر روی آن کلیک کنید"
 	},
 	"options_enhancement_award_popup_url": {
-		"message": "پشتیبانی از پارامتر $award$ در لینک های shared file و لینک های پروفایل",
+		"message": "پشتیبانی از پارامتر $award$ در لینک های shared file و در پروفایل",
 		"placeholders": {
 			"award": {
 				"content": "<code>award</code>"
@@ -577,16 +596,19 @@
 		}
 	},
 	"options_builtin_collapse_library": {
-		"message": "افزودن یک دکمه برای جمع کردن بلوک \"در حال حاضر در library شماست\""
+		"message": "افزودن یک دکمه برای جمع کردن بلوک \"در حال حاضر در کتابخانه ی شماست\""
 	},
 	"options_builtin_card_drops": {
-		"message": "نمایش تعداد دراپ های کارت باقی‌مانده در صفحات Badges"
+		"message": "نمایش تعداد دراپ های کارت باقی‌مانده در صفحه ی Badges"
 	},
 	"options_builtin_queue_cheat": {
-		"message": "افزودن دکمه برای نمایش صف اکتشافات در زمان حراج به صورت خودکار"
+		"message": "افزودن دکمه برای نمایش لیست اکتشافات در زمان حراج به صورت خودکار"
+	},
+	"options_builtin_multibuy_redirect": {
+		"message": "بازگشت به صفحه کارت‌های بازی پس از خریدن کارت‌های باقی‌مانده"
 	},
 	"options_builtin_achievements_global": {
-		"message": "بهبود صفحه دستاوردها"
+		"message": "بهبود صفحه دستاوردهای جهانی"
 	},
 	"options_builtin_achievements_link": {
 		"message": "اتصال به صفحه دستاورد های شخصی"

@@ -10,18 +10,17 @@
 		DisableButtons: 3,
 	};
 
-	let i;
-	let link;
-	const giftCache = {};
-	const hasLinksEnabled = document.body.dataset.steamdbLinks === 'true';
-	const hasPreciseSubIDsEnabled = document.body.dataset.steamdbGiftSubid === 'true';
+	const giftCache = {}; // TODO: Store this in indexeddb
+
 	const scriptHook = document.getElementById( 'steamdb_inventory_hook' );
 	const homepage = scriptHook.dataset.homepage;
 	const i18n = JSON.parse( scriptHook.dataset.i18n );
-	const originalPopulateActions = window.PopulateActions;
-	let hasQuickSellEnabled = document.body.dataset.steamdbQuickSell === 'true' && window.g_bViewingOwnProfile && window.g_bMarketAllowed;
-	const originalPopulateMarketActions = window.PopulateMarketActions;
-	const currencyCode = window.GetCurrencyCode( window.g_rgWalletInfo.wallet_currency );
+	const options = JSON.parse( scriptHook.dataset.options );
+
+	const hasLinksEnabled = options[ 'link-inventory' ];
+	const hasPreciseSubIDsEnabled = options[ 'link-inventory-gift-subid' ];
+	const hasBadgeInfoEnabled = options[ 'enhancement-inventory-badge-info' ];
+	let hasQuickSellEnabled = options[ 'enhancement-inventory-quick-sell' ] && window.g_bViewingOwnProfile && window.g_bMarketAllowed;
 
 	const dummySellEvent =
 	{
@@ -41,16 +40,17 @@
 		window.SellItemDialog.OnInputKeyUp( null ); // Recalculate prices
 		window.SellItemDialog.OnAccept( dummySellEvent );
 
-		if( document.body.dataset.steamdbQuickSellAuto )
+		if( options[ 'enhancement-inventory-quick-sell-auto' ] )
 		{
 			window.SellItemDialog.OnConfirmationAccept( dummySellEvent );
 		}
 	};
 
+	const currencyCode = window.GetCurrencyCode( window.g_rgWalletInfo.wallet_currency );
 	const FormatCurrency = ( valueInCents ) =>
 		window.v_currencyformat( valueInCents, currencyCode, window.g_rgWalletInfo.wallet_country );
 
-	if( document.body.dataset.steamdbNoSellReload )
+	if( options[ 'enhancement-inventory-no-sell-reload' ] )
 	{
 		let nextRefreshCausedBySell = false;
 		const originalOnSuccess = window.SellItemDialog.OnSuccess;
@@ -89,17 +89,17 @@
 		};
 	}
 
-	if( hasQuickSellEnabled )
+	const originalBuildHover = window.BuildHover;
+
+	window.BuildHover = function( prefix )
 	{
-		const originalBuildHover = window.BuildHover;
+		document.querySelector( `#${prefix} .steamdb_quick_sell` )?.remove();
+		document.querySelector( `#${prefix} .steamdb_badge_info` )?.remove();
 
-		window.BuildHover = function()
-		{
-			document.querySelector( '.steamdb_quick_sell' )?.remove();
+		originalBuildHover.apply( this, arguments );
+	};
 
-			originalBuildHover.apply( this, arguments );
-		};
-	}
+	const originalPopulateMarketActions = window.PopulateMarketActions;
 
 	window.PopulateMarketActions = function( elActions, item )
 	{
@@ -234,12 +234,172 @@
 		}
 	};
 
+	let badgesDataLoaded = false;
+	let badgesData = [];
+
+	function AddBadgeInformation( element, rgActions, item, steamid )
+	{
+		if( !item.description.market_fee_app )
+		{
+			return;
+		}
+
+		let isTradingCard = false;
+		let isFoilCard = false;
+		let foundBadge = false;
+
+		for( const tag of item.description.tags )
+		{
+			if( tag.category === 'cardborder' )
+			{
+				isFoilCard = tag.internal_name !== 'cardborder_0';
+			}
+			else if( tag.category === 'item_class' )
+			{
+				isTradingCard = tag.internal_name === 'item_class_2';
+			}
+		}
+
+		const CreateLink = ( foil ) =>
+			`https://steamcommunity.com/profiles/${steamid}/gamecards/${item.description.market_fee_app}${foil ? '?border=1' : ''}`;
+
+		for( const badge of badgesData )
+		{
+			if( badge.appid !== item.description.market_fee_app )
+			{
+				continue;
+			}
+
+			const isFoilBadge = badge.border_color > 0;
+
+			if( isTradingCard && isFoilCard !== isFoilBadge )
+			{
+				continue;
+			}
+
+			foundBadge = true;
+
+			const span = document.createElement( 'span' );
+			const str = isFoilBadge ? i18n.inventory_badge_foil_level : i18n.inventory_badge_level;
+			span.textContent = str.replace( '%level%', badge.level.toString() );
+
+			const link = document.createElement( 'a' );
+			link.className = 'btnv6_blue_hoverfade btn_small_thin';
+			link.href = CreateLink( isFoilBadge );
+			link.append( span );
+
+			element.append( link );
+		}
+
+		if( !foundBadge )
+		{
+			const span = document.createElement( 'span' );
+			span.textContent = i18n.inventory_badge_none;
+
+			const link = document.createElement( 'a' );
+			link.className = 'btnv6_blue_hoverfade btn_small_thin';
+			link.href = CreateLink( isFoilCard );
+			link.append( span );
+
+			element.append( link );
+		}
+
+		// TODO: This has a race condition when it's called after badge info fetch() as it directly modifies rgActions
+		for( let i = 0; i < rgActions.length; i++ )
+		{
+			if( rgActions[ i ].link.startsWith( 'https://steamcommunity.com/my/gamecards/' ) )
+			{
+				// Remove the 'View badge progress' button
+				rgActions.splice( i, 1 );
+				break;
+			}
+		}
+	}
+
+	function LoadBadgeInformation( element, rgActions, item, steamid )
+	{
+		if( badgesDataLoaded )
+		{
+			if( badgesData.length > 0 )
+			{
+				AddBadgeInformation( element, rgActions, item, steamid );
+			}
+
+			return;
+		}
+
+		// TODO: This has a race condition if user switches to another item before the fetch request completes
+		// but the only problem they will get is no badge info will be displayed.
+		badgesDataLoaded = true;
+
+		const applicationConfigElement = document.getElementById( 'application_config' );
+
+		if( !applicationConfigElement )
+		{
+			return;
+		}
+
+		const applicationConfig = JSON.parse( applicationConfigElement.dataset.config );
+		const accessToken = JSON.parse( applicationConfigElement.dataset.loyalty_webapi_token );
+
+		if( !accessToken )
+		{
+			return;
+		}
+
+		const params = new URLSearchParams();
+		params.set( 'format', 'json' );
+		params.set( 'access_token', accessToken );
+		params.set( 'steamid', steamid );
+		params.set( 'x_requested_with', 'SteamDB' );
+
+		fetch( `${applicationConfig.WEBAPI_BASE_URL}IPlayerService/GetBadges/v1/?${params.toString()}` )
+			.then( ( response ) => response.json() )
+			.then( ( response ) =>
+			{
+				if( response.response?.badges )
+				{
+					badgesData = response.response.badges;
+
+					AddBadgeInformation( element, rgActions, item, steamid );
+				}
+			} );
+	}
+
+	const originalPopulateActions = window.PopulateActions;
+
 	window.PopulateActions = function( prefix, elActions, rgActions, item, owner )
 	{
 		let foundState = FoundState.None;
 
 		try
 		{
+			if( hasBadgeInfoEnabled && window.g_bViewingOwnProfile && item.description.appid === 753 && item.description.tags && elActions.classList.contains( 'item_owner_actions' ) )
+			{
+				let itemClass = null;
+
+				for( const tag of item.description.tags )
+				{
+					if( tag.category === 'item_class' )
+					{
+						itemClass = tag.internal_name;
+						break;
+					}
+				}
+
+				if(
+					itemClass === 'item_class_2' || // trading card
+					itemClass === 'item_class_5' // booster pack
+				)
+				{
+					const element = document.createElement( 'div' );
+					element.className = 'steamdb_badge_info';
+					elActions.insertAdjacentElement( 'beforebegin', element );
+
+					LoadBadgeInformation( element, rgActions, item, owner.strSteamId );
+				}
+			}
+
 			// PopulateActions is called for both item.description.actions and item.description.owner_actions, we only want first one
 			if( hasLinksEnabled && item.description.appid === 753 && rgActions === item.description.actions )
 			{
@@ -247,9 +407,9 @@
 				{
 					let couponLink, pos;
 
-					for( i = 0; i < rgActions.length; i++ )
+					for( let i = 0; i < rgActions.length; i++ )
 					{
-						link = rgActions[ i ];
+						const link = rgActions[ i ];
 
 						if( link.steamdb )
 						{
@@ -274,7 +434,7 @@
 					{
 						const subs = couponLink.substring( pos + 'list_of_subs='.length ).split( ',' );
 
-						for( i = 0; i < subs.length; i++ )
+						for( let i = 0; i < subs.length; i++ )
 						{
 							rgActions.push( {
 								steamdb: true,
@@ -294,9 +454,9 @@
 						rgActions = [];
 					}
 
-					for( i = 0; i < rgActions.length; i++ )
+					for( let i = 0; i < rgActions.length; i++ )
 					{
-						link = rgActions[ i ];
+						const link = rgActions[ i ];
 
 						if( link.steamdb )
 						{
@@ -335,7 +495,7 @@
 								{
 									giftCache[ item.description.classid ] = xhr.response.packageid;
 
-									link = elActions.querySelector( '.item_actions a[href="#steamdb_' + item.assetid + '"]' );
+									const link = elActions.querySelector( '.item_actions a[href="#steamdb_' + item.assetid + '"]' );
 
 									if( link )
 									{
@@ -356,9 +516,9 @@
 				}
 				else if( rgActions )
 				{
-					for( i = 0; i < rgActions.length; i++ )
+					for( let i = 0; i < rgActions.length; i++ )
 					{
-						link = rgActions[ i ];
+						const link = rgActions[ i ];
 
 						if( link.steamdb )
 						{
@@ -374,22 +534,22 @@
 
 					if( foundState === FoundState.Process )
 					{
-						for( i = 0; i < rgActions.length; i++ )
+						for( let i = 0; i < rgActions.length; i++ )
 						{
-							link = rgActions[ i ].link;
+							const link = rgActions[ i ].link;
 
 							if( !link )
 							{
 								continue;
 							}
 
-							link = link.match( /\.com\/(app|sub)\/([0-9]+)/ );
+							const linkMatch = link.match( /\.com\/(app|sub)\/([0-9]+)/ );
 
-							if( link )
+							if( linkMatch )
 							{
 								rgActions.push( {
 									steamdb: true,
-									link: homepage + link[ 1 ] + '/' + link[ 2 ] + '/',
+									link: homepage + linkMatch[ 1 ] + '/' + linkMatch[ 2 ] + '/',
 									name: i18n.view_on_steamdb, // TODO: Add id?
 								} );
 
@@ -402,13 +562,13 @@
 				}
 				else if( item.description.type === 'Gift' )
 				{
-					link = item.description.name.match( /^Unknown package ([0-9]+)$/ );
+					const linkMatch = item.description.name.match( /^Unknown package ([0-9]+)$/ );
 
-					if( link )
+					if( linkMatch )
 					{
 						item.description.actions = rgActions = [ {
 							steamdb: true,
-							link: homepage + 'sub/' + link[ 1 ] + '/',
+							link: homepage + 'sub/' + linkMatch[ 1 ] + '/',
 							name: i18n.view_on_steamdb,
 						} ];
 					}
@@ -428,18 +588,19 @@
 		catch( e )
 		{
 			// Don't break website functionality if something fails above
+			console.error( '[SteamDB]', e );
 		}
 
-		originalPopulateActions( prefix, elActions, rgActions, item, owner );
+		originalPopulateActions.apply( this, arguments );
 
 		// We want our links to be open in new tab
 		if( foundState === FoundState.Added )
 		{
-			link = elActions.querySelectorAll( '.item_actions a[href^="' + homepage + '"]' );
+			const link = elActions.querySelectorAll( '.item_actions a[href^="' + homepage + '"]' );
 
 			if( link )
 			{
-				for( i = 0; i < link.length; i++ )
+				for( let i = 0; i < link.length; i++ )
 				{
 					link[ i ].target = '_blank';
 				}
@@ -447,11 +608,11 @@
 		}
 		else if( foundState === FoundState.DisableButtons )
 		{
-			link = elActions.querySelectorAll( '.item_actions a[href^="#steamdb_"]' );
+			const link = elActions.querySelectorAll( '.item_actions a[href^="#steamdb_"]' );
 
 			if( link )
 			{
-				for( i = 0; i < link.length; i++ )
+				for( let i = 0; i < link.length; i++ )
 				{
 					link[ i ].target = '_blank';
 					link[ i ].classList.add( 'btn_disabled' );

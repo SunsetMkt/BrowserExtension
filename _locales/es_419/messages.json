@@ -149,6 +149,9 @@
 			}
 		}
 	},
+	"agecheck_option_hint": {
+		"message": "SteamDB tiene una opción para omitir automáticamente las páginas de verificación de edad"
+	},
 	"explore_auto_discover": {
 		"message": "Descubrir automáticamente"
 	},
@@ -171,29 +174,45 @@
 			}
 		}
 	},
-	"explore_failed_to_clear": {
-		"message": "Se produjo un error al borrar el elemento de la cola n.º $current$, se reintentará en cinco segundos…",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
 	"explore_failed_to_clear_too_many": {
-		"message": "Se produjo un error al borrar el elemento de la cola n.º $current$ demasiadas veces. Puede volver a intentarlo más tarde.",
-		"placeholders": {
-			"current": {
-				"content": "$1",
-				"example": "5"
-			}
-		}
-	},
-	"explore_failed_to_generate": {
-		"message": "Se produjo un error al generar una nueva cola, se reintentará en cinco segundos…"
+		"message": "Se produjo un error al borrar la cola demasiadas veces. Puede intentarlo de nuevo más tarde."
 	},
 	"explore_finished": {
 		"message": "La cola ha sido explorada."
+	},
+	"explore_saleitem_claim": {
+		"message": "Reclamar recompensa"
+	},
+	"explore_saleitem_claim_description": {
+		"message": "Reclama la recompensa diaria gratuita, en caso de haberla."
+	},
+	"explore_saleitem_trying_to_claim": {
+		"message": "Reclamando la recompensa diaria…"
+	},
+	"explore_saleitem_cant_claim": {
+		"message": "No hay recompensa diaria que reclamar en este momento."
+	},
+	"explore_saleitem_next_item_time": {
+		"message": "Siguiente artículo disponible: $datetime$",
+		"placeholders": {
+			"datetime": {
+				"content": "$1",
+				"example": "01.07.2024, 20:00:00",
+				"description": "Date and time format depends on locale set in browser"
+			}
+		}
+	},
+	"explore_saleitem_claim_failed": {
+		"message": "Se produjo un error al reclamar la recompensa diaria."
+	},
+	"explore_saleitem_success": {
+		"message": "Nueva recompensa reclamada: $item$.",
+		"placeholders": {
+			"item": {
+				"content": "$1",
+				"example": "Unicorn Sticker"
+			}
+		}
 	},
 	"badges_idle_apps": {
 		"message": "Juegos con tarjetas: $amount$",
@@ -296,6 +315,27 @@
 	},
 	"inventory_sell_at_title": {
 		"message": "Pone el artículo al precio más alto de la orden de compra.\n\nEl precio mostrado es el dinero que recibes (sin comisiones)."
+	},
+	"inventory_badge_level": {
+		"message": "Tu nivel de insignia: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "5"
+			}
+		}
+	},
+	"inventory_badge_foil_level": {
+		"message": "Tu nivel de insignia reflectante: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "1"
+			}
+		}
+	},
+	"inventory_badge_none": {
+		"message": "Ninguna insignia fabricada"
 	},
 	"options": {
 		"message": "Opciones"
@@ -495,6 +535,9 @@
 	"options_enhancement_inventory_quick_sell_auto": {
 		"message": "Aceptar automáticamente la venta rápida"
 	},
+	"options_enhancement_inventory_badge_info": {
+		"message": "Mostrar el nivel de insignias en las tarjetas y el pack de refuerzo"
+	},
 	"options_display_market_price_others": {
 		"message": "Mostrar el precio de mercado de los artículos en los inventarios de otros usuarios"
 	},
@@ -584,6 +627,9 @@
 	},
 	"options_builtin_queue_cheat": {
 		"message": "Agregar un botón para hacer trampa en la cola de descubrimiento durante las ofertas"
+	},
+	"options_builtin_multibuy_redirect": {
+		"message": "Redireccionar a la página de tarjetas del juego después de comprar las tarjetas restantes"
 	},
 	"options_builtin_achievements_global": {
 		"message": "Mejorar la página de logros mundiales"
