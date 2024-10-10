@@ -1,6 +1,6 @@
 {
 	"extension_description": {
-		"message": "Afegeix enllaços de SteamDB i noves funcionalitats a la botiga i comunitat de Steam. Mira els preus més baixos dels jocs i estadístiques.",
+		"message": "Afegeix enllaços de SteamDB i noves utilitats a la botiga i comunitat de Steam. Mira els preus més baixos dels jocs i estadístiques.",
 		"description": "This value can be up to 132 characters."
 	},
 	"steamdb_options": {
@@ -316,6 +316,27 @@
 	"inventory_sell_at_title": {
 		"message": "Llista l'article pel preu de la comanda de compra més alt\n\nEl preu mostrat són els diners que reps (sense comissions)"
 	},
+	"inventory_badge_level": {
+		"message": "El teu nivell d'insígnia: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "5"
+			}
+		}
+	},
+	"inventory_badge_foil_level": {
+		"message": "El teu nivell d'insígnia d'alumini: $level$",
+		"placeholders": {
+			"level": {
+				"content": "%level%",
+				"example": "1"
+			}
+		}
+	},
+	"inventory_badge_none": {
+		"message": "Cap insígnia elaborada"
+	},
 	"options": {
 		"message": "Opcions"
 	},
@@ -513,6 +534,9 @@
 	},
 	"options_enhancement_inventory_quick_sell_auto": {
 		"message": "Acceptar automàticament una venda ràpida"
+	},
+	"options_enhancement_inventory_badge_info": {
+		"message": "Mostra el nivell d'insígnia en cromos i paquets de cromos"
 	},
 	"options_display_market_price_others": {
 		"message": "Mostrar l'inventari d'altres usuaris el preu de mercat de l'article"

@@ -1,6 +1,6 @@
 {
 	"manifest_version": 3,
-	"version": "4.5",
+	"version": "4.7",
 	"author": "SteamDB",
 	"name": "SteamDB",
 	"short_name": "SteamDB",
@@ -54,6 +54,7 @@
 				"scripts/community/inventory.js",
 				"scripts/community/agecheck_injected.js",
 				"scripts/community/filedetails_award_injected.js",
+				"scripts/community/market_injected.js",
 				"scripts/community/multibuy_injected.js",
 				"scripts/community/profile_award_injected.js",
 				"scripts/community/tradeoffer_injected.js",
@@ -83,6 +84,7 @@
 	"content_scripts":
 	[
 		{
+			"run_at": "document_start",
 			"matches":
 			[
 				"https://steamdb.info/*"
@@ -97,6 +99,18 @@
 			[
 				"scripts/common.js",
 				"scripts/steamdb/global.js"
+			]
+		},
+		{
+			"run_at": "document_start",
+			"matches":
+			[
+				"https://store.steampowered.com/*",
+				"https://steamcommunity.com/*"
+			],
+			"js":
+			[
+				"scripts/common.js"
 			]
 		},
 
@@ -128,7 +142,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/global.js",
 				"scripts/store/invalidate_cache.js"
 			],
@@ -146,7 +159,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/store/app_error.js",
 				"scripts/store/app.js"
 			],
@@ -162,7 +174,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/store/app_error.js",
 				"scripts/store/app_news.js"
 			],
@@ -179,7 +190,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/store/app_images.js"
 			]
 		},
@@ -191,7 +201,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/store/account_licenses.js"
 			],
 			"css":
@@ -207,7 +216,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/store/registerkey.js"
 			],
 			"css":
@@ -222,7 +230,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/store/sub.js"
 			],
 			"css":
@@ -237,7 +244,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/store/bundle.js"
 			]
 		},
@@ -249,7 +255,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/store/widget.js"
 			],
 			"css":
@@ -266,7 +271,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/store/app_error.js",
 				"scripts/store/agecheck.js"
 			]
@@ -278,7 +282,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/store/explore.js"
 			]
 		},
@@ -298,7 +301,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/appicon.js"
 			]
 		},
@@ -321,7 +323,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/global.js"
 			],
 			"css":
@@ -337,7 +338,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/community/profile.js"
 			],
 			"css":
@@ -354,7 +354,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/community/profile_inventory.js"
 			],
 			"css":
@@ -371,7 +370,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/community/achievements.js",
 				"scripts/community/achievements_profile.js"
 			],
@@ -381,13 +379,28 @@
 			]
 		},
 		{
+			"run_at": "document_end",
+			"matches":
+			[
+				"https://steamcommunity.com/id/*/stats/CSGO*",
+				"https://steamcommunity.com/profiles/*/stats/CSGO*"
+			],
+			"js":
+			[
+				"scripts/community/achievements_cs2.js"
+			],
+			"css":
+			[
+				"styles/achievements_cs2.css"
+			]
+		},
+		{
 			"matches":
 			[
 				"https://steamcommunity.com/stats/*/achievements*"
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/community/achievements.js",
 				"scripts/community/achievements_global.js"
 			],
@@ -408,7 +421,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/community/tradeoffer.js"
 			]
 		},
@@ -420,7 +432,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/community/profile_recommended.js"
 			],
 			"css":
@@ -436,7 +447,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/community/profile_badges.js"
 			],
 			"css":
@@ -452,7 +462,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/community/profile_gamecards.js"
 			],
 			"css":
@@ -471,7 +480,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/community/gamehub.js"
 			],
 			"css":
@@ -502,6 +510,21 @@
 			]
 		},
 		{
+			"run_at": "document_start",
+			"matches":
+			[
+				"https://steamcommunity.com/market/*"
+			],
+			"js":
+			[
+				"scripts/community/market.js"
+			],
+			"css":
+			[
+				"styles/market.css"
+			]
+		},
+		{
 			"run_at": "document_end",
 			"matches":
 			[
@@ -512,7 +535,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/community/agecheck.js"
 			]
 		},
@@ -526,7 +548,6 @@
 			],
 			"js":
 			[
-				"scripts/common.js",
 				"scripts/community/market_ssa.js"
 			]
 		}

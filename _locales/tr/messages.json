@@ -1,6 +1,6 @@
 {
 	"extension_description": {
-		"message": "Steam mağazası ve topluluğuna SteamDB bağlantılarını ve yeni özellikleri ekler. En düşük oyun fiyatlarını ve istatistiklerini şimdi görüntüleyin.",
+		"message": "SteamDB, Steam mağaza ve topluluğuna yeni özellikler ve bağlantılar ekler. En düşük oyun fiyatlarını ve istatistiklerini gösterir.",
 		"description": "This value can be up to 132 characters."
 	},
 	"steamdb_options": {
@@ -153,7 +153,7 @@
 		"message": "SteamDB yaş doğrulamalarını otomatik olarak atlama seçeneğine sahiptir"
 	},
 	"explore_auto_discover": {
-		"message": "Otomatik Keşfet"
+		"message": "Otomatik keşfet"
 	},
 	"explore_auto_discover_description": {
 		"message": "Etkinlik kartı almak için kuyruğu otomatik olarak keşfeder."
@@ -291,6 +291,21 @@
 	"achievements_groups_by_steamhunters": {
 		"message": "Başarım gruplandırmaları Steam Hunters tarafından SteamDB aracılığıyla sağlanmaktadır.",
 		"description": "Steam Hunters is the name of https://steamhunters.com/ please do not translate it"
+	},
+	"achievements_csrating_season": {
+		"message": "$season$. sezon",
+		"placeholders": {
+			"season": {
+				"content": "$1",
+				"example": "1"
+			}
+		}
+	},
+	"achievements_csrating_date": {
+		"message": "Tarih"
+	},
+	"achievements_csrating_name": {
+		"message": "CS Derecesi"
 	},
 	"inventory_list_at": {
 		"message": "Satışa koy: $price$",
@@ -639,5 +654,8 @@
 	},
 	"options_builtin_achievements_locked": {
 		"message": "Kilitli başarımları kilit simgesi ile göster"
+	},
+	"options_builtin_achievements_csrating": {
+		"message": "CS2'nin başarımlarında CS derecelerini göster"
 	}
 }

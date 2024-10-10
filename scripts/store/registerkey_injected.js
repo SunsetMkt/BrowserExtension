@@ -1,7 +1,7 @@
-( function()
-{
-	'use strict';
+'use strict';
 
+( ( () =>
+{
 	const script = document.getElementById( 'steamdb_registerkey_hook' );
 	const originalOnRegisterProductKeyFailure = window.OnRegisterProductKeyFailure;
 
@@ -9,7 +9,7 @@
 	{
 		originalOnRegisterProductKeyFailure.apply( this, arguments );
 
-		if( receipt && receipt.line_items && receipt.line_items.length > 0 )
+		if( receipt?.line_items && receipt.line_items.length > 0 )
 		{
 			document.getElementById( 'error_display' ).appendChild( FormatLineItems( receipt.line_items ) );
 		}
@@ -62,4 +62,4 @@
 
 		return fragment;
 	}
-}() );
+} )() );

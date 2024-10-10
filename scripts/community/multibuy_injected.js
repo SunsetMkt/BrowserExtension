@@ -1,7 +1,7 @@
-( function()
-{
-	'use strict';
+'use strict';
 
+( ( () =>
+{
 	const originalOrderPollingComplete = window.OrderPollingComplete;
 
 	window.OrderPollingComplete = function SteamDB_OrderPollingComplete()
@@ -50,4 +50,4 @@
 
 		window.location = returnToUrl.toString();
 	};
-}() );
+} )() );

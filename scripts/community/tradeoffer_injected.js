@@ -1,7 +1,7 @@
-( function()
-{
-	'use strict';
+'use strict';
 
+( ( () =>
+{
 	if( !window.CTradeOfferStateManager )
 	{
 		return;
@@ -159,4 +159,4 @@
 
 		return originalShowAlertDialog.apply( this, arguments );
 	};
-}() );
+} )() );

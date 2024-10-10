@@ -1,7 +1,7 @@
-( function()
-{
-	'use strict';
+'use strict';
 
+( ( () =>
+{
 	if( !( 'g_rgProfileData' in window ) || !( 'fnLoyalty_ShowAwardModal' in window ) )
 	{
 		return;
@@ -23,6 +23,6 @@
 			// do nothing
 		},
 		undefined, // ugcType
-		parseInt( awardId, 10 ),
+		Number.parseInt( awardId, 10 ),
 	);
-}() );
+} )() );

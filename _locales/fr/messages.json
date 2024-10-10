@@ -1,6 +1,6 @@
 {
 	"extension_description": {
-		"message": "Ajoute des liens vers SteamDB, et de nouvelles fonctionnalités au magasin et à la communauté Steam. Vous pouvez voir les prix les plus bas et des statistiques.",
+		"message": "Ajoute des liens SteamDB, et des fonctionnalités au magasin et à la communauté Steam. Affiche les prix les plus bas et des stats.",
 		"description": "This value can be up to 132 characters."
 	},
 	"steamdb_options": {
@@ -291,6 +291,21 @@
 	"achievements_groups_by_steamhunters": {
 		"message": "Les groupes de succès sont fournis par Steam Hunters via SteamDB.",
 		"description": "Steam Hunters is the name of https://steamhunters.com/ please do not translate it"
+	},
+	"achievements_csrating_season": {
+		"message": "Saison $season$",
+		"placeholders": {
+			"season": {
+				"content": "$1",
+				"example": "1"
+			}
+		}
+	},
+	"achievements_csrating_date": {
+		"message": "Date"
+	},
+	"achievements_csrating_name": {
+		"message": "Note CS"
 	},
 	"inventory_list_at": {
 		"message": "Lister à $price$",
@@ -639,5 +654,8 @@
 	},
 	"options_builtin_achievements_locked": {
 		"message": "Afficher un cadenas sur les succès verrouillés"
+	},
+	"options_builtin_achievements_csrating": {
+		"message": "Afficher l'historique de note CS sur la page des succès de CS2"
 	}
 }

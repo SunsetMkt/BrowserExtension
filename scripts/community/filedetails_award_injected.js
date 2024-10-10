@@ -1,7 +1,7 @@
-( function()
-{
-	'use strict';
+'use strict';
 
+( ( () =>
+{
 	if( !( 'PublishedFileAward' in window ) )
 	{
 		return;
@@ -33,7 +33,7 @@
 
 	window.PublishedFileAward(
 		data.groups.id,
-		parseInt( data.groups.fileType, 10 ),
-		parseInt( awardId, 10 ),
+		Number.parseInt( data.groups.fileType, 10 ),
+		Number.parseInt( awardId, 10 ),
 	);
-}() );
+} )() );

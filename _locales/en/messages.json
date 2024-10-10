@@ -301,6 +301,22 @@
 		"description": "Steam Hunters is the name of https://steamhunters.com/ please do not translate it"
 	},
 
+	"achievements_csrating_season": {
+		"message": "Season $season$",
+		"placeholders": {
+			"season": {
+				"content": "$1",
+				"example": "1"
+			}
+		}
+	},
+	"achievements_csrating_date": {
+		"message": "Date"
+	},
+	"achievements_csrating_name": {
+		"message": "CS Rating"
+	},
+
 	"inventory_list_at": {
 		"message": "List at $price$",
 		"placeholders": {
@@ -591,6 +607,9 @@
 		"message": "Accept Subscriber Agreement on market, inventory, and activate key pages automatically",
 		"description": "Steam Subscriber Agreement (SSA): https://store.steampowered.com/subscriber_agreement/"
 	},
+	"options_enhancement_market_stickers": {
+		"message": "Display extra information about market listings such as Counter-Strike 2 stickers"
+	},
 	"options_enhancement_hide_install_button": {
 		"message": "Hide \"Install Steam\" button in header",
 		"description:": "\"Install Steam\" should match what the button on Steam itself in the header says: https://store.steampowered.com/"
@@ -655,5 +674,8 @@
 	},
 	"options_builtin_achievements_locked": {
 		"message": "Display a lock icon for locked achievements"
+	},
+	"options_builtin_achievements_csrating": {
+		"message": "Display CS rating history on CS2 achievements page"
 	}
 }

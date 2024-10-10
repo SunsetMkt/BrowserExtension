@@ -150,7 +150,7 @@
 		}
 	},
 	"agecheck_option_hint": {
-		"message": "SteamDB 可以自动跳过这些年龄验证页面"
+		"message": "SteamDB 能够自动跳过此类年龄检查页面"
 	},
 	"explore_auto_discover": {
 		"message": "自动探索队列"
@@ -175,7 +175,7 @@
 		}
 	},
 	"explore_failed_to_clear_too_many": {
-		"message": "队列探索失败次数过多，请稍后再试"
+		"message": "探索队列多次失败，请稍后再试。"
 	},
 	"explore_finished": {
 		"message": "队列探索完成。"
@@ -291,6 +291,21 @@
 	"achievements_groups_by_steamhunters": {
 		"message": "成就分组信息由 Steam Hunters 通过 SteamDB 提供。",
 		"description": "Steam Hunters is the name of https://steamhunters.com/ please do not translate it"
+	},
+	"achievements_csrating_season": {
+		"message": "第 $season$ 赛季",
+		"placeholders": {
+			"season": {
+				"content": "$1",
+				"example": "1"
+			}
+		}
+	},
+	"achievements_csrating_date": {
+		"message": "日期"
+	},
+	"achievements_csrating_name": {
+		"message": "CS 段位"
 	},
 	"inventory_list_at": {
 		"message": "以 $price$ 上架",
@@ -639,5 +654,8 @@
 	},
 	"options_builtin_achievements_locked": {
 		"message": "在未解锁的成就旁显示锁定图标"
+	},
+	"options_builtin_achievements_csrating": {
+		"message": "在 CS2 成就页面显示 CS 段位历史"
 	}
 }

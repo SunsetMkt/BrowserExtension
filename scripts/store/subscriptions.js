@@ -1,7 +1,7 @@
-( function()
-{
-	'use strict';
+'use strict';
 
+( ( () =>
+{
 	const scriptHook = document.getElementById( 'steamdb_subscriptions_hook' );
 	const homepage = scriptHook.dataset.homepage;
 	const originalDropdownSelectOption = window.GamePurchaseDropdownSelectOption;
@@ -22,4 +22,4 @@
 		link.href = `${homepage}sub/${subId}/`;
 		link.querySelector( '.steamdb_link_id' ).textContent = subId.toString();
 	};
-}() );
+} )() );

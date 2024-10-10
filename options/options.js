@@ -1,7 +1,7 @@
-( function()
-{
-	'use strict';
+'use strict';
 
+( ( () =>
+{
 	document.body.dir = _t( '@@bidi_dir' );
 
 	const localizable = document.querySelectorAll( '[data-msg]' );
@@ -46,9 +46,10 @@
 		document.getElementById( 'welcome' ).hidden = false;
 	}
 
-	let element;
 	let starDismissed = false;
 	const checkboxes = document.querySelectorAll( '.option-check:not(:disabled)' );
+
+	/** @type {Object.<string, HTMLElement[]>} */
 	const options =
 	{
 		'clicked-star': null,
@@ -68,14 +69,22 @@
 
 	for( let i = 0; i < checkboxes.length; i++ )
 	{
-		element = checkboxes[ i ];
+		const element = checkboxes[ i ];
+		const item = element.dataset.option;
 
-		options[ element.dataset.option ] = element;
+		if( !options[ item ] )
+		{
+			options[ item ] = [ element ];
+		}
+		else
+		{
+			options[ item ].push( element );
+		}
 
 		element.addEventListener( 'change', CheckboxChange );
 	}
 
-	GetOption( Object.keys( options ), function( items )
+	GetOption( Object.keys( options ), ( items ) =>
 	{
 		for( const item in items )
 		{
@@ -86,9 +95,10 @@
 				continue;
 			}
 
-			element = options[ item ];
-
-			element.checked = items[ item ];
+			for( const element of options[ item ] )
+			{
+				element.checked = items[ item ];
+			}
 		}
 	} );
 
@@ -100,8 +110,11 @@
 		{
 			if( options[ item ] )
 			{
-				options[ item ].checked = !!changes[ item ].newValue;
-				options[ item ].disabled = false;
+				for( const element of options[ item ] )
+				{
+					element.checked = !!changes[ item ].newValue;
+					element.disabled = false;
+				}
 			}
 		}
 	} );
@@ -173,4 +186,4 @@
 	{
 		storeUrl.href = storeHref;
 	}
-}() );
+} )() );
